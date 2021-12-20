@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_listy"
+    app:startDestination="@id/fragment_lista_studenci">
+
+    <fragment
+        android:id="@+id/fragment_lista_studenci"
+        android:name="com.example.assistant.fragment_lista_studenci"
+        android:label="fragment_lista_studenci"
+        tools:layout="@layout/fragment_lista_studenci" >
+        <action
+            android:id="@+id/action_fragment_lista_studenci_to_fragment_lista_grupy"
+            app:destination="@id/fragment_lista_grupy" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_lista_grupy"
+        android:name="com.example.assistant.fragment_lista_grupy"
+        android:label="fragment_lista_grupy"
+        tools:layout="@layout/fragment_lista_grupy" >
+        <action
+            android:id="@+id/action_fragment_lista_grupy_to_fragment_lista_studenci"
+            app:destination="@id/fragment_lista_studenci" />
+    </fragment>
+</navigation>
