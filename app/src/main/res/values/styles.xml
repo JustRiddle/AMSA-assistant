@@ -7,7 +7,7 @@
 
     <!-- Set parent theme as app theme. -->
     <style name="DialogTheme" parent="Widget.Theme.Assistant.ButtonBar.Fullscreen">
-        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowNoTitle">false</item>
         <item name="android:windowFullscreen">false</item>
         <item name="android:windowIsFloating">false</item>
 

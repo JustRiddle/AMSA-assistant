@@ -2,4 +2,28 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/navigation"/>
+    android:id="@+id/navigation"
+    app:startDestination="@id/fragment_tabs">
+    <fragment
+        android:id="@+id/fragment_tabs"
+        android:name="com.example.assistant.fragment_tabs"
+        android:label="fragment_tabs"
+        tools:layout="@layout/fragment_tabs" >
+        <action
+            android:id="@+id/action_fragment_tabs_to_fragment_dodajGrupe"
+            app:destination="@id/fragment_dodajGrupe" />
+        <action
+            android:id="@+id/action_fragment_tabs_to_dodajStudenta"
+            app:destination="@id/dodajStudenta" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_dodajGrupe"
+        android:name="com.example.assistant.fragment_dodajGrupe"
+        android:label="fragment_dodaj_grupe"
+        tools:layout="@layout/fragment_dodaj_grupe" />
+    <fragment
+        android:id="@+id/dodajStudenta"
+        android:name="com.example.assistant.DodajStudenta"
+        android:label="fragment_dodaj_studenta"
+        tools:layout="@layout/fragment_dodaj_studenta" />
+</navigation>

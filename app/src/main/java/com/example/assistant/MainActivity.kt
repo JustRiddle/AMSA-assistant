@@ -13,15 +13,12 @@ class MainActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        viewPager.adapter = PageAdapter(supportFragmentManager)
-        tabLayout.setupWithViewPager(viewPager)
-        Log.d("MOJE","MainActivity OnCreate")
+        Log.d("MOJE","Main OnCreate")
 
     }
 
     override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
-        Log.d("MOJE","Main OnCreateView")
+//        Log.d("MOJE","Main OnCreateView")
         return super.onCreateView(name, context, attrs)
     }
 

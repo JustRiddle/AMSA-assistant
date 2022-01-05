@@ -44,13 +44,13 @@ class fragment_lista_grupy : Fragment(), CallbackListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.d("MOJE","Grupy OnViewCreated")
-        btn_dodaj_grupe.setOnClickListener { showDialog() }
+        //btn_dodaj_grupe.setOnClickListener { showDialog() }
+        (view.findViewById<FloatingActionButton>(R.id.btn_dodaj_grupe)).setOnClickListener{
+            it.findNavController().navigate(R.id.action_fragment_tabs_to_fragment_dodajGrupe)
+        }
 
     }
-    private fun showDialog() {
-        val dialogFragment = FullScreenDialogExample(this)
-        dialogFragment.show(parentFragmentManager, "signature")
-    }
+
 
     override fun onDataReceived(data: String) {
         var x = data
