@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.fragment_lista_grupy.*
 
@@ -21,6 +23,8 @@ class fragment_lista_grupy : Fragment(), CallbackListener {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    lateinit var grupyAdapter: AdapterGrupy
+    lateinit var GrlayoutManager:LinearLayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,27 +32,30 @@ class fragment_lista_grupy : Fragment(), CallbackListener {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-        Log.d("MOJE","Grupy OnCreate")
 
+        grupyAdapter=(activity as MainActivity).GrupyAdapter
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.d("MOJE","Grupy OnCreateView")
+
         return inflater.inflate(R.layout.fragment_lista_grupy, container, false)
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d("MOJE","Grupy OnViewCreated")
-        //btn_dodaj_grupe.setOnClickListener { showDialog() }
-        (view.findViewById<FloatingActionButton>(R.id.btn_dodaj_grupe)).setOnClickListener{
+        (view.findViewById<FloatingActionButton>(R.id.btn_nowa_grupa)).setOnClickListener{
             it.findNavController().navigate(R.id.action_fragment_tabs_to_fragment_dodajGrupe)
         }
 
+        GrlayoutManager= LinearLayoutManager(context)
+        view.findViewById<RecyclerView>(R.id.recycler_grupy).apply {
+            adapter=grupyAdapter
+            layoutManager=GrlayoutManager
+        }
     }
 
 

@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
 import androidx.navigation.findNavController
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.example.assistant.Model.Student
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -15,13 +17,14 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [fragment_lista_studenci.newInstance] factory method to
+ * Use the [DodajStudenta.newInstance] factory method to
  * create an instance of this fragment.
  */
-class fragment_lista_studenci : Fragment() {
+class DodajStudenta : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    lateinit var studenci: MutableList<Student>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,22 +32,43 @@ class fragment_lista_studenci : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+        studenci=(activity as MainActivity).studenci
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_lista_studenci, container, false)
+        return inflater.inflate(R.layout.fragment_dodaj_studenta, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (view.findViewById<FloatingActionButton>(R.id.btn_dodaj_studenta)).setOnClickListener{
-            it.findNavController().navigate(R.id.action_fragment_tabs_to_dodajStudenta)
+
+        val imie = view.findViewById<TextView>(R.id.edit_imie)
+        val nazwisko = view.findViewById<TextView>(R.id.edit_nazwisko)
+        val nr_albumu = view.findViewById<TextView>(R.id.edit_nr_albumu)
+
+
+        /**  DODAWANIE DO LISTY      */
+        view.findViewById<Button>(R.id.btn_dodajStudenta).setOnClickListener{
+            studenci.add(
+                Student(
+                imie.text.toString(),
+                nazwisko.text.toString(),
+                nr_albumu.text.toString()
+            )
+            )
+            (activity as MainActivity).StudenciAdapter.notifyDataSetChanged()
+            it.findNavController().navigate(R.id.action_dodajStudenta_to_fragment_tabs)
+
+
         }
+
     }
+
+
+
     companion object {
         /**
          * Use this factory method to create a new instance of
@@ -52,12 +76,12 @@ class fragment_lista_studenci : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment fragment_lista_studenci.
+         * @return A new instance of fragment DodajStudenta.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            fragment_lista_studenci().apply {
+            DodajStudenta().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
