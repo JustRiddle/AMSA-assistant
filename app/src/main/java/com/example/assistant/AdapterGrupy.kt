@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.assistant.Model.Grupa
 
@@ -20,7 +21,7 @@ class AdapterGrupy(val grupy: List<Grupa>):RecyclerView.Adapter<AdapterGrupy.Hol
             textViewGodziny = itemView.findViewById<TextView>(R.id.textView_Godziny)
 
             itemView.setOnClickListener {
-                Toast.makeText(itemView.context, "Kliknieto", Toast.LENGTH_LONG).show()
+                it.findNavController().navigate(R.id.action_fragment_tabs_to_fragment_grupa_details)
             }
         }
 
