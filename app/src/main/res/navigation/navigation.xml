@@ -32,6 +32,11 @@
             app:destination="@id/fragment_tabs"
             app:popUpTo="@id/fragment_tabs"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_fragment_dodajGrupe_to_fragment_grupa_details"
+            app:destination="@id/fragment_grupa_details"
+            app:popUpTo="@id/fragment_grupa_details"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/dodajStudenta"
@@ -43,15 +48,59 @@
             app:destination="@id/fragment_tabs"
             app:popUpTo="@id/fragment_tabs"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_dodajStudenta_to_fragment_student_details"
+            app:destination="@id/fragment_student_details"
+            app:popUpTo="@id/fragment_student_details"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/fragment_student_details"
         android:name="com.example.assistant.fragment_student_details"
         android:label="fragment_student_details"
-        tools:layout="@layout/fragment_student_details" />
+        tools:layout="@layout/fragment_student_details" >
+        <action
+            android:id="@+id/action_fragment_student_details_to_dodajStudenta"
+            app:destination="@id/dodajStudenta" />
+        <action
+            android:id="@+id/action_fragment_student_details_to_fragment_dodaj_ocene"
+            app:destination="@id/fragment_dodaj_ocene" />
+    </fragment>
     <fragment
         android:id="@+id/fragment_grupa_details"
         android:name="com.example.assistant.fragment_grupa_details"
         android:label="fragment_grupa_details"
-        tools:layout="@layout/fragment_grupa_details" />
+        tools:layout="@layout/fragment_grupa_details" >
+        <action
+            android:id="@+id/action_fragment_grupa_details_to_fragment_dodajGrupe"
+            app:destination="@id/fragment_dodajGrupe" />
+        <action
+            android:id="@+id/action_fragment_grupa_details_to_fragment_student_details"
+            app:destination="@id/fragment_student_details" />
+        <action
+            android:id="@+id/action_fragment_grupa_details_to_fragment_dodaj_spotkanie"
+            app:destination="@id/fragment_dodaj_spotkanie" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_dodaj_spotkanie"
+        android:name="com.example.assistant.fragment_dodaj_spotkanie"
+        android:label="fragment_dodaj_spotkanie"
+        tools:layout="@layout/fragment_dodaj_spotkanie" >
+        <action
+            android:id="@+id/action_fragment_dodaj_spotkanie_to_fragment_grupa_details"
+            app:destination="@id/fragment_grupa_details"
+            app:popUpTo="@id/fragment_grupa_details"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_dodaj_ocene"
+        android:name="com.example.assistant.fragment_dodaj_ocene"
+        android:label="fragment_dodaj_ocene"
+        tools:layout="@layout/fragment_dodaj_ocene" >
+        <action
+            android:id="@+id/action_fragment_dodaj_ocene_to_fragment_student_details"
+            app:destination="@id/fragment_student_details"
+            app:popUpTo="@id/fragment_student_details"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

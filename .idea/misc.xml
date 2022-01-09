@@ -5,6 +5,8 @@
       <map>
         <entry key="..\:/Users/Bartek/Desktop/Programowanko/Android/assistant/app/src/main/res/layout/activity_main.xml" value="0.18" />
         <entry key="..\:/Users/Bartek/Desktop/Programowanko/Android/assistant/app/src/main/res/layout/fragment_dodaj_grupe.xml" value="0.18" />
+        <entry key="..\:/Users/Bartek/Desktop/Programowanko/Android/assistant/app/src/main/res/layout/fragment_dodaj_ocene.xml" value="0.20923913043478262" />
+        <entry key="..\:/Users/Bartek/Desktop/Programowanko/Android/assistant/app/src/main/res/layout/fragment_dodaj_spotkanie.xml" value="0.20923913043478262" />
         <entry key="..\:/Users/Bartek/Desktop/Programowanko/Android/assistant/app/src/main/res/layout/fragment_dodaj_studenta.xml" value="0.182518115942029" />
         <entry key="..\:/Users/Bartek/Desktop/Programowanko/Android/assistant/app/src/main/res/layout/fragment_fullscreen.xml" value="0.1" />
         <entry key="..\:/Users/Bartek/Desktop/Programowanko/Android/assistant/app/src/main/res/layout/fragment_grupa_det_spotkania.xml" value="0.19384057971014493" />
@@ -19,6 +21,8 @@
         <entry key="..\:/Users/Bartek/Desktop/Programowanko/Android/assistant/app/src/main/res/layout/fragment_student_details.xml" value="0.23143115942028986" />
         <entry key="..\:/Users/Bartek/Desktop/Programowanko/Android/assistant/app/src/main/res/layout/fragment_tabs.xml" value="0.18020833333333333" />
         <entry key="..\:/Users/Bartek/Desktop/Programowanko/Android/assistant/app/src/main/res/layout/recycler_item_grupy.xml" value="0.33" />
+        <entry key="..\:/Users/Bartek/Desktop/Programowanko/Android/assistant/app/src/main/res/layout/recycler_item_ocena.xml" value="0.20199275362318841" />
+        <entry key="..\:/Users/Bartek/Desktop/Programowanko/Android/assistant/app/src/main/res/layout/recycler_item_spotkania.xml" value="0.25" />
         <entry key="..\:/Users/Bartek/Desktop/Programowanko/Android/assistant/app/src/main/res/layout/recycler_item_studenci.xml" value="0.23505434782608695" />
       </map>
     </option>

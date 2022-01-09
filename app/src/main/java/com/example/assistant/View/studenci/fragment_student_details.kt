@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.navigation.findNavController
 import kotlinx.android.synthetic.main.fragment_student_details.*
 import kotlinx.android.synthetic.main.fragment_tabs.*
 
@@ -45,6 +47,10 @@ class fragment_student_details : Fragment() {
 
         viewPager_studentDet.adapter = TabsAdapterStudentDet(childFragmentManager)
         tabStudentDet.setupWithViewPager(viewPager_studentDet)
+
+        view.findViewById<Button>(R.id.btn_edytuj_studentDet).setOnClickListener {
+            it.findNavController().navigate(R.id.action_fragment_student_details_to_dodajStudenta)
+        }
     }
 
 
