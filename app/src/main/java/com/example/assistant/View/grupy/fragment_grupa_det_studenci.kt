@@ -34,7 +34,7 @@ class fragment_grupa_det_studenci : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-        studenciAdapter=(activity as MainActivity).StudenciAdapter
+//        studenciAdapter=(activity as MainActivity).StudenciAdapter
     }
 
     override fun onCreateView(
@@ -48,11 +48,11 @@ class fragment_grupa_det_studenci : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        StlayoutManager= LinearLayoutManager(context)
-        view.findViewById<RecyclerView>(R.id.recycler_studenciWGrupie).apply {
-            adapter=studenciAdapter
-            layoutManager=StlayoutManager
-        }
+//        StlayoutManager= LinearLayoutManager(context)
+//        view.findViewById<RecyclerView>(R.id.recycler_studenciWGrupie).apply {
+//            adapter=studenciAdapter
+//            layoutManager=StlayoutManager
+//        }
 
     }
 

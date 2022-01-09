@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Bartek/Desktop/Programowanko/Android/assistant/app/src/main/res/drawable/ic_check.xml" value="0.2846153846153846" />
+        <entry key="..\:/Users/Bartek/Desktop/Programowanko/Android/assistant/app/src/main/res/drawable/ic_pencil.xml" value="0.2846153846153846" />
         <entry key="..\:/Users/Bartek/Desktop/Programowanko/Android/assistant/app/src/main/res/layout/activity_main.xml" value="0.18" />
         <entry key="..\:/Users/Bartek/Desktop/Programowanko/Android/assistant/app/src/main/res/layout/fragment_dodaj_grupe.xml" value="0.18" />
         <entry key="..\:/Users/Bartek/Desktop/Programowanko/Android/assistant/app/src/main/res/layout/fragment_dodaj_ocene.xml" value="0.20923913043478262" />

@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_tabs.*
+import kotlinx.coroutines.InternalCoroutinesApi
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -18,6 +19,8 @@ private const val ARG_PARAM2 = "param2"
  * Use the [fragment_tabs.newInstance] factory method to
  * create an instance of this fragment.
  */
+
+@InternalCoroutinesApi
 class fragment_tabs : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -39,6 +42,7 @@ class fragment_tabs : Fragment() {
         Log.d("MOJE","Tabs OnCreateView")
         return inflater.inflate(R.layout.fragment_tabs, container, false)
     }
+
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

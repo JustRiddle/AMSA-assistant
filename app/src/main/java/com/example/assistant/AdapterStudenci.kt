@@ -8,7 +8,10 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.assistant.Model.Student
 
-class AdapterStudenci(val studenci: List<Student>):RecyclerView.Adapter<AdapterStudenci.Holder>() {
+
+class AdapterStudenci:RecyclerView.Adapter<AdapterStudenci.Holder>() {
+
+    private var studenci = emptyList<Student>()
     inner class Holder(itemView: View): RecyclerView.ViewHolder(itemView){
         val textViewImie: TextView
         val textViewNazwisko: TextView
@@ -41,5 +44,10 @@ class AdapterStudenci(val studenci: List<Student>):RecyclerView.Adapter<AdapterS
     }
 
     override fun getItemCount()=studenci.count()
+
+    fun setData(studenci_zewn: List<Student>){
+        this.studenci = studenci_zewn
+        notifyDataSetChanged()
+    }
 
 }
