@@ -10,6 +10,10 @@ class mainRepository(private  val mainDAO: mainDAO) {
         mainDAO.addStudent(student)
     }
 
+    suspend fun updateStudent(student: Student){
+        mainDAO.updateStudent(student)
+    }
+
     suspend fun addGroup(grupa: Grupa){
         mainDAO.addGrupa(grupa)
     }

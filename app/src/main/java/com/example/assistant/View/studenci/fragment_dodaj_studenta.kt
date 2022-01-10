@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.fragment_dodaj_studenta.view.*
 import kotlinx.coroutines.InternalCoroutinesApi
 
 @InternalCoroutinesApi
-class DodajStudenta : Fragment() {
+class dodajStudenta : Fragment() {
 
 
     private lateinit var mStudentViewModel: ViewModel_studenci
