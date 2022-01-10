@@ -1,57 +1,76 @@
 package com.example.assistant
 
 import android.os.Bundle
+import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.Spinner
-import android.widget.TextView
+import android.widget.*
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.assistant.Model.Grupa
+import com.example.assistant.Model.Student
+import com.example.assistant.ViewModel.ViewModel_grupy
+import com.example.assistant.ViewModel.ViewModel_studenci
+import kotlinx.android.synthetic.main.fragment_dodaj_grupe.*
+import kotlinx.android.synthetic.main.fragment_dodaj_grupe.view.*
+import kotlinx.android.synthetic.main.fragment_dodaj_studenta.*
+import kotlinx.android.synthetic.main.fragment_dodaj_studenta.view.*
+import kotlinx.coroutines.InternalCoroutinesApi
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [fragment_dodajGrupe.newInstance] factory method to
- * create an instance of this fragment.
- */
+@InternalCoroutinesApi
 class fragment_dodajGrupe : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-    lateinit var grupy: MutableList<Grupa>
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-        grupy=(activity as MainActivity).grupy
-
-    }
+    private lateinit var mGrupyViewModel: ViewModel_grupy
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_dodaj_grupe, container, false)
+        val view =inflater.inflate(R.layout.fragment_dodaj_grupe, container, false)
+
+        mGrupyViewModel = ViewModelProvider(this).get(ViewModel_grupy::class.java)
+        view.btn_dodajGrupe.setOnClickListener {
+            insertDataToDatabase()
+        }
+
+        return view
     }
+
+    private fun insertDataToDatabase() {
+        val nazwa = edit_nazwaGrupy.text.toString()
+        val dzien = spinner_dni.selectedItem.toString()
+        val godz_od = time_od.text.toString()
+        val godz_do = time_do.text.toString()
+
+        if (inputCheck(nazwa, godz_od, godz_do)) {
+
+            // Tworzenie obiektu Student
+            val grupa = Grupa(0, nazwa, dzien, godz_od, godz_do)
+
+            // Dodanie do bazy
+            mGrupyViewModel.addGroup(grupa)
+            Toast.makeText(requireContext(), "Grupa dodana!", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_fragment_dodajGrupe_to_fragment_tabs)
+
+        } else {
+            Toast.makeText(requireContext(), "Wypełnij wszystkie pola", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun inputCheck(nazwa: String, godz_od: String, godz_do: String): Boolean{
+        return !(TextUtils.isEmpty(nazwa) && TextUtils.isEmpty(godz_do) && TextUtils.isEmpty(godz_od))
+    }
+
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val nazwa = view.findViewById<TextView>(R.id.edit_nazwaGrupy)
         val spinner = view.findViewById<Spinner>(R.id.spinner_dni)
-        val godz_od = view.findViewById<TextView>(R.id.time_od)
-        val godz_do = view.findViewById<TextView>(R.id.time_do)
 
         /** Obsługa spinnera */
         ArrayAdapter.createFromResource(
@@ -62,42 +81,5 @@ class fragment_dodajGrupe : Fragment() {
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinner.adapter = adapter
         }
-        /**  DODAWANIE DO LISTY      */
-        view.findViewById<Button>(R.id.btn_dodajGrupe).setOnClickListener{
-            grupy.add(
-                Grupa(
-                nazwa.text.toString(),
-                spinner.selectedItem.toString(),
-                godz_od.text.toString(),
-                godz_do.text.toString()
-            )
-            )
-            (activity as MainActivity).GrupyAdapter.notifyDataSetChanged()
-            it.findNavController().navigate(R.id.action_fragment_dodajGrupe_to_fragment_tabs)
-
-
-        }
-
-    }
-
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment fragment_dodajGrupe.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            fragment_dodajGrupe().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
     }
 }

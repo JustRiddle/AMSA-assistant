@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/fragment_tabs"
         android:name="com.example.assistant.fragment_tabs"
-        android:label="fragment_tabs"
+        android:label="Asystent nauczyciela"
         tools:layout="@layout/fragment_tabs" >
         <action
             android:id="@+id/action_fragment_tabs_to_fragment_dodajGrupe"
@@ -25,7 +25,7 @@
     <fragment
         android:id="@+id/fragment_dodajGrupe"
         android:name="com.example.assistant.fragment_dodajGrupe"
-        android:label="fragment_dodaj_grupe"
+        android:label="Nowa grupa"
         tools:layout="@layout/fragment_dodaj_grupe" >
         <action
             android:id="@+id/action_fragment_dodajGrupe_to_fragment_tabs"
@@ -41,7 +41,7 @@
     <fragment
         android:id="@+id/dodajStudenta"
         android:name="com.example.assistant.DodajStudenta"
-        android:label="fragment_dodaj_studenta"
+        android:label="Nowy student"
         tools:layout="@layout/fragment_dodaj_studenta" >
         <action
             android:id="@+id/action_dodajStudenta_to_fragment_tabs"
@@ -57,7 +57,7 @@
     <fragment
         android:id="@+id/fragment_student_details"
         android:name="com.example.assistant.fragment_student_details"
-        android:label="fragment_student_details"
+        android:label="Student"
         tools:layout="@layout/fragment_student_details" >
         <action
             android:id="@+id/action_fragment_student_details_to_dodajStudenta"
@@ -69,7 +69,7 @@
     <fragment
         android:id="@+id/fragment_grupa_details"
         android:name="com.example.assistant.fragment_grupa_details"
-        android:label="fragment_grupa_details"
+        android:label="Grupa"
         tools:layout="@layout/fragment_grupa_details" >
         <action
             android:id="@+id/action_fragment_grupa_details_to_fragment_dodajGrupe"
@@ -84,7 +84,7 @@
     <fragment
         android:id="@+id/fragment_dodaj_spotkanie"
         android:name="com.example.assistant.fragment_dodaj_spotkanie"
-        android:label="fragment_dodaj_spotkanie"
+        android:label="Nowe spotkanie"
         tools:layout="@layout/fragment_dodaj_spotkanie" >
         <action
             android:id="@+id/action_fragment_dodaj_spotkanie_to_fragment_grupa_details"
@@ -95,7 +95,7 @@
     <fragment
         android:id="@+id/fragment_dodaj_ocene"
         android:name="com.example.assistant.fragment_dodaj_ocene"
-        android:label="fragment_dodaj_ocene"
+        android:label="Dodaj ocenę"
         tools:layout="@layout/fragment_dodaj_ocene" >
         <action
             android:id="@+id/action_fragment_dodaj_ocene_to_fragment_student_details"

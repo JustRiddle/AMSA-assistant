@@ -15,13 +15,6 @@ import com.example.assistant.Model.Student
 
 class MainActivity : AppCompatActivity(){
 
-
-    val grupy = mutableListOf<Grupa>(
-        Grupa("Remiza",   "Wtorek","16:00","17:30"),
-        Grupa("Jutrzenka","Środa", "16:15","17:45"),
-        Grupa("Wyszyński","Piątek","15:00","16:30")
-    )
-
     val spotkania = mutableListOf<Spotkanie>(
         Spotkanie("11.01.2021", "Pojazd czterokołowy ze skrętną przeednią osią"),
         Spotkanie("18.01.2021", "Walki robotów- konstrukcje własne"),
@@ -32,22 +25,18 @@ class MainActivity : AppCompatActivity(){
         Ocena("25/30", "Projekt 1")
     )
 
-    val GrupyAdapter=AdapterGrupy(grupy)
     val SpotkaniaAdapter=AdapterSpotkania(spotkania)
     val OcenyAdapter = AdapterOceny(oceny)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//
-//        setupActionBarWithNavController(findNavController(R.id.fragmentContainerView))
+
+        setupActionBarWithNavController(findNavController(R.id.MainfragmentContainer))
 
     }
 
-    override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
-//        Log.d("MOJE","Main OnCreateView")
-        return super.onCreateView(name, context, attrs)
-    }
+
 
 
 }

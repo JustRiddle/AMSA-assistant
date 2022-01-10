@@ -8,7 +8,6 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.assistant.Model.Student
 
-
 class AdapterStudenci:RecyclerView.Adapter<AdapterStudenci.Holder>() {
 
     private var studenci = emptyList<Student>()

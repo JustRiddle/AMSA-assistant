@@ -5,22 +5,22 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.assistant.Model.Student
-import com.example.assistant.Model.StudentDatabase
-import com.example.assistant.Model.StudentRepository
+import com.example.assistant.Model.mainDatabase
+import com.example.assistant.Model.mainRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.launch
 
 @InternalCoroutinesApi
-class ViewModel_lista_studenci(application: Application): AndroidViewModel(application) {
+class ViewModel_studenci(application: Application): AndroidViewModel(application) {
 
-    val readAllData: LiveData<List<Student>>
-    private val repository: StudentRepository
+    val getAllStudents: LiveData<List<Student>>
+    private val repository: mainRepository
 
     init {
-        val studentDAO = StudentDatabase.getDatabase(application).studentDAO()
-        repository = StudentRepository(studentDAO)
-        readAllData = repository.readAllData
+        val studentDAO = mainDatabase.getDatabase(application).mainDAO()
+        repository = mainRepository(studentDAO)
+        getAllStudents = repository.getAllStudents
     }
 
     fun addStudent(student: Student){

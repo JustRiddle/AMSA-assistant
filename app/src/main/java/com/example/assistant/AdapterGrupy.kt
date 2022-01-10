@@ -8,8 +8,10 @@ import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.assistant.Model.Grupa
+import com.example.assistant.Model.Student
 
-class AdapterGrupy(val grupy: List<Grupa>):RecyclerView.Adapter<AdapterGrupy.Holder>() {
+class AdapterGrupy:RecyclerView.Adapter<AdapterGrupy.Holder>() {
+    private var grupy = emptyList<Grupa>()
     inner class Holder(itemView: View): RecyclerView.ViewHolder(itemView){
         val textViewNazwa: TextView
         val textViewDzien: TextView
@@ -43,4 +45,8 @@ class AdapterGrupy(val grupy: List<Grupa>):RecyclerView.Adapter<AdapterGrupy.Hol
 
     override fun getItemCount()=grupy.count()
 
+    fun setData(grupy_zewn: List<Grupa>){
+        this.grupy = grupy_zewn
+        notifyDataSetChanged()
+    }
 }
