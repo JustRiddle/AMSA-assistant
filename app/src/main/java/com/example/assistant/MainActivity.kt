@@ -28,6 +28,11 @@ class MainActivity : AppCompatActivity(){
     val SpotkaniaAdapter=AdapterSpotkania(spotkania)
     val OcenyAdapter = AdapterOceny(oceny)
 
+    ////////////////   ^   Do odstrzału   ^   ////////////////
+
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

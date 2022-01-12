@@ -9,6 +9,8 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.assistant.Model.Grupa
 import com.example.assistant.Model.Student
+import kotlinx.android.synthetic.main.recycler_item_grupy.view.*
+import kotlinx.android.synthetic.main.recycler_item_studenci.view.*
 
 class AdapterGrupy:RecyclerView.Adapter<AdapterGrupy.Holder>() {
     private var grupy = emptyList<Grupa>()
@@ -41,6 +43,11 @@ class AdapterGrupy:RecyclerView.Adapter<AdapterGrupy.Holder>() {
         holder.textViewNazwa.text=grupy[position].Nazwa
         holder.textViewDzien.text=grupy[position].dzien_tygodnia
         holder.textViewGodziny.text=grupy[position].godz_od +" - "+ grupy[position].godz_do
+
+        holder.itemView.item_grupa.setOnClickListener {
+            val action = fragment_tabsDirections.actionFragmentTabsToFragmentGrupaDetails(grupy[position])
+            holder.itemView.findNavController().navigate(action)
+        }
     }
 
     override fun getItemCount()=grupy.count()

@@ -1,4 +1,4 @@
-package com.example.assistant
+package com.example.assistant.View.studenci
 
 import android.os.Bundle
 import android.text.TextUtils
@@ -9,9 +9,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.assistant.Model.Student
+import com.example.assistant.R
 import com.example.assistant.ViewModel.ViewModel_studenci
 import kotlinx.android.synthetic.main.fragment_edytuj_studenta.*
 import kotlinx.android.synthetic.main.fragment_edytuj_studenta.view.*
@@ -51,7 +51,7 @@ class fragment_edytuj_studenta : Fragment() {
 
         if(inputCheck(imie,nazwisko,nr_albumu))
         {
-            val updatedStudent = Student(args.currentStudent.id, imie, nazwisko, nr_albumu)
+            val updatedStudent = Student(args.currentStudent.studentId, imie, nazwisko, nr_albumu)
             mStudentViewModel.updateStudent(updatedStudent)
 
             Toast.makeText(requireContext(), "Dane o studencie zaktualizowane!", Toast.LENGTH_SHORT).show()

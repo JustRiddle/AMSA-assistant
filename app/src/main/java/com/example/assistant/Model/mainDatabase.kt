@@ -7,7 +7,14 @@ import androidx.room.RoomDatabase
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.internal.synchronized
 
-@Database(entities = [Student::class, Grupa::class], version = 1, exportSchema = false)
+@Database(
+    entities = [
+        Student::class,
+        Grupa::class,
+        GrupaStudentCross::class
+    ],
+    version = 1,
+    exportSchema = false)
 abstract class mainDatabase: RoomDatabase() {
 
     abstract fun mainDAO(): mainDAO
@@ -26,7 +33,7 @@ abstract class mainDatabase: RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     mainDatabase::class.java,
-                    "T1"
+                    "T2"
                 ).build()
                 INSTANCE = instance
                 return instance

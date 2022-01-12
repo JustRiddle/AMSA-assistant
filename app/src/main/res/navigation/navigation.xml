@@ -73,6 +73,12 @@
         <action
             android:id="@+id/action_fragment_grupa_details_to_fragment_edytuj_grupe"
             app:destination="@id/fragment_edytuj_grupe" />
+        <argument
+            android:name="currentGroup"
+            app:argType="com.example.assistant.Model.Grupa" />
+        <action
+            android:id="@+id/action_fragment_grupa_details_to_fragment_enrolment"
+            app:destination="@id/fragment_enrolment" />
     </fragment>
     <fragment
         android:id="@+id/fragment_dodaj_spotkanie"
@@ -98,7 +104,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_edytuj_studenta"
-        android:name="com.example.assistant.fragment_edytuj_studenta"
+        android:name="com.example.assistant.View.studenci.fragment_edytuj_studenta"
         android:label="Edytuj informacje o Studencie"
         tools:layout="@layout/fragment_edytuj_studenta" >
         <action
@@ -112,7 +118,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_edytuj_grupe"
-        android:name="com.example.assistant.fragment_edytuj_grupe"
+        android:name="com.example.assistant.View.grupy.fragment_edytuj_grupe"
         android:label="fragment_edytuj_grupe"
         tools:layout="@layout/fragment_edytuj_grupe" >
         <action
@@ -120,5 +126,20 @@
             app:destination="@id/fragment_grupa_details"
             app:popUpTo="@id/fragment_grupa_details"
             app:popUpToInclusive="true" />
+        <argument
+            android:name="currentGroup"
+            app:argType="com.example.assistant.Model.Grupa" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_enrolment"
+        android:name="com.example.assistant.fragment_enrolment"
+        android:label="fragment_enrolment"
+        tools:layout="@layout/fragment_enrolment" >
+        <action
+            android:id="@+id/action_fragment_enrolment_to_fragment_grupa_details"
+            app:destination="@id/fragment_grupa_details" />
+        <argument
+            android:name="currentGroup"
+            app:argType="com.example.assistant.Model.Grupa" />
     </fragment>
 </navigation>

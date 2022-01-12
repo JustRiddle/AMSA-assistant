@@ -8,7 +8,7 @@
     tools:context=".fragment_grupa_details">
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/text_nazwaGr_detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -28,13 +28,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/text_kiedy_detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="Poniedziałek 12:00 - 13:30"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toBottomOf="@+id/text_nazwaGr_detail" />
 
 
     <com.google.android.material.tabs.TabLayout
@@ -44,7 +44,7 @@
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10">
+        app:layout_constraintTop_toBottomOf="@+id/text_kiedy_detail">
 
 
 

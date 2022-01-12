@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout4"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment_edytuj_grupe">
+    tools:context=".View.grupy.fragment_edytuj_grupe">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -18,7 +18,7 @@
         android:ems="10"
         android:inputType="time"
         app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/edit_nazwaGrupy" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_nazwaGrupy_zmiana" />
 
     <TextView
         android:id="@+id/textView4"
@@ -27,8 +27,8 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="18dp"
         android:text="Do"
-        app:layout_constraintStart_toEndOf="@+id/time_od"
-        app:layout_constraintTop_toBottomOf="@+id/edit_nazwaGrupy" />
+        app:layout_constraintStart_toEndOf="@+id/time_od_zmiana"
+        app:layout_constraintTop_toBottomOf="@+id/edit_nazwaGrupy_zmiana" />
 
 
 

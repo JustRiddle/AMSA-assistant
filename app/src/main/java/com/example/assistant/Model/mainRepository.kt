@@ -6,6 +6,7 @@ class mainRepository(private  val mainDAO: mainDAO) {
     val getAllStudents: LiveData<List<Student>> = mainDAO.getAllStudents()
     val getAllGroups: LiveData<List<Grupa>> = mainDAO.getAllGroups()
 
+
     suspend fun addStudent(student: Student){
         mainDAO.addStudent(student)
     }
@@ -16,5 +17,16 @@ class mainRepository(private  val mainDAO: mainDAO) {
 
     suspend fun addGroup(grupa: Grupa){
         mainDAO.addGrupa(grupa)
+    }
+
+    suspend fun updateGroup(grupa: Grupa){
+        mainDAO.updateGrupa(grupa)
+    }
+    fun addEnrolment(grupa: Grupa, student: Student){
+        mainDAO.addEnrolment(GrupaStudentCross(grupa.grupaId,student.studentId))
+    }
+
+    suspend fun getStudenciWGrupie(grupa: Grupa): LiveData<List<StudenciWGrupie>> {
+       return mainDAO.getStudenciWGrupie(grupa.grupaId)
     }
 }

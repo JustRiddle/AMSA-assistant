@@ -1,6 +1,7 @@
 package com.example.assistant.ViewModel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
@@ -14,6 +15,7 @@ import kotlinx.coroutines.launch
 
 @InternalCoroutinesApi
 class ViewModel_grupy(application: Application): AndroidViewModel(application) {
+
 
     val getAllGroups: LiveData<List<Grupa>>
     private val repository: mainRepository
@@ -29,4 +31,13 @@ class ViewModel_grupy(application: Application): AndroidViewModel(application) {
             repository.addGroup(grupa)
         }
     }
+
+    fun updateGrupa(grupa: Grupa){
+        viewModelScope.launch(Dispatchers.IO){
+            repository.updateGroup(grupa)
+        }
+    }
+
+
+
 }

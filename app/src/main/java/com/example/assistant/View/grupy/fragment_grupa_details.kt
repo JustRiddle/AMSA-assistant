@@ -1,30 +1,29 @@
 package com.example.assistant
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
+import com.example.assistant.ViewModel.SharedViewModel
 import kotlinx.android.synthetic.main.fragment_grupa_details.*
-import kotlinx.android.synthetic.main.fragment_student_details.*
+import kotlinx.android.synthetic.main.fragment_grupa_details.view.*
 import kotlinx.coroutines.InternalCoroutinesApi
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [fragment_grupa_details.newInstance] factory method to
- * create an instance of this fragment.
- */
 @InternalCoroutinesApi
-class fragment_grupa_details : Fragment() {
+class fragment_grupa_details() : Fragment(){
 
+    private val sharedViewModel: SharedViewModel by activityViewModels()
+    private val args by navArgs<fragment_grupa_detailsArgs>()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        sharedViewModel.setCurrentGroup(args.currentGroup)
+    }
 
 
     override fun onCreateView(
@@ -32,7 +31,24 @@ class fragment_grupa_details : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_grupa_details, container, false)
+        val view = inflater.inflate(R.layout.fragment_grupa_details, container, false)
+        val child = inflater.inflate(R.layout.fragment_grupa_det_studenci, container, false)
+
+
+        view.text_nazwaGr_detail.text = args.currentGroup.Nazwa
+        view.text_kiedy_detail.text = args.currentGroup.dzien_tygodnia+" "+args.currentGroup.godz_od+"-"+args.currentGroup.godz_do
+
+        view.btn_edytuj_grupaDet.setOnClickListener {
+            val action = fragment_grupa_detailsDirections.actionFragmentGrupaDetailsToFragmentEdytujGrupe(args.currentGroup) //(studenci[position])
+
+            view.findNavController().navigate(action)
+        }
+
+
+
+
+
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -40,13 +56,13 @@ class fragment_grupa_details : Fragment() {
 
         viewPager_grupaDet.adapter = TabsAdapterGrupaDet(childFragmentManager)
         tabGrupaDet.setupWithViewPager(viewPager_grupaDet)
+        //curGrupa.setCurGrupa(args.currentGroup)
 
-//        view.findViewById<Button>(R.id.btn_edytuj_grupaDet).setOnClickListener {
-//            it.findNavController().navigate(R.id.action_fragment_grupa_details_to_fragment_dodajGrupe)
-//        }
+//        val parent: fragment_grupa_det_studenci =
+//            childFragmentManager.findFragmentById(R.id.fragment_grupa_det_studenci) as fragment_grupa_det_studenci
+//        parent.setCurrGroup(args.currentGroup)
+//        Log.d("MOJE", "Przesłano")
+
+
     }
-
-
-
-
 }
