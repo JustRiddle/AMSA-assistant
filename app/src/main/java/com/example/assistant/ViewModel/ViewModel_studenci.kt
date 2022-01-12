@@ -16,10 +16,11 @@ class ViewModel_studenci(application: Application): AndroidViewModel(application
 
     val getAllStudents: LiveData<List<Student>>
     private val repository: mainRepository
-    val returnedVal = MutableLiveData<List<StudenciWGrupie>>()
+    private val mainDAO :mainDAO = mainDatabase.getDatabase(application).mainDAO()
+
+
     init {
-        val studentDAO = mainDatabase.getDatabase(application).mainDAO()
-        repository = mainRepository(studentDAO)
+        repository = mainRepository(mainDAO)
         getAllStudents = repository.getAllStudents
     }
 
@@ -41,19 +42,12 @@ class ViewModel_studenci(application: Application): AndroidViewModel(application
         }
     }
 
-//    private fun _getGroupStudents(grupa: Grupa)
-//    {
-//        lateinit var result:LiveData<List<StudenciWGrupie>>
-//        viewModelScope.launch(Dispatchers.IO) {
-//            returnedGetGroup = repository.getStudenciWGrupie(grupa)
-//        }
-//    }
 
-    fun getGroupStudents(grupa: Grupa){
+
+    fun getStudenciWGrupie(grupa: Grupa):LiveData<List<StudenciWGrupie>>{
         Log.d("WEWNETRZNIE","BARDZO")
-        viewModelScope.launch {
-            returnedVal.value = repository.getStudenciWGrupie(grupa).value
-        }
+        val StudenciWGrupie:LiveData<List<StudenciWGrupie>> = mainDAO.getStudenciWGrupie(grupa.grupaId)
+        return StudenciWGrupie
     }
 
 }

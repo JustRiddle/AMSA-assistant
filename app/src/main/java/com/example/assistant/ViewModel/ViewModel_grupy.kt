@@ -5,10 +5,7 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.example.assistant.Model.Grupa
-import com.example.assistant.Model.Student
-import com.example.assistant.Model.mainDatabase
-import com.example.assistant.Model.mainRepository
+import com.example.assistant.Model.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.launch
@@ -19,10 +16,10 @@ class ViewModel_grupy(application: Application): AndroidViewModel(application) {
 
     val getAllGroups: LiveData<List<Grupa>>
     private val repository: mainRepository
+    private val mainDAO :mainDAO = mainDatabase.getDatabase(application).mainDAO()
 
     init {
-        val studentDAO = mainDatabase.getDatabase(application).mainDAO()
-        repository = mainRepository(studentDAO)
+        repository = mainRepository(mainDAO)
         getAllGroups = repository.getAllGroups
     }
 
@@ -38,6 +35,10 @@ class ViewModel_grupy(application: Application): AndroidViewModel(application) {
         }
     }
 
-
+    fun getGrupyStudenta(grupa: Grupa):LiveData<List<StudenciWGrupie>>{
+        Log.d("WEWNETRZNIE","BARDZO")
+        val StudenciWGrupie:LiveData<List<StudenciWGrupie>> = mainDAO.getStudenciWGrupie(grupa.grupaId)
+        return StudenciWGrupie
+    }
 
 }

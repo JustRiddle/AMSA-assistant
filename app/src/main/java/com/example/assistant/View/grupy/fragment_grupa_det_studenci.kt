@@ -17,13 +17,14 @@ import com.example.assistant.ViewModel.ViewModel_grupy
 import com.example.assistant.ViewModel.ViewModel_studenci
 import kotlinx.android.synthetic.main.fragment_grupa_det_studenci.view.*
 import kotlinx.android.synthetic.main.fragment_lista_grupy.view.*
+import kotlinx.android.synthetic.main.fragment_lista_studenci.view.*
 import kotlinx.coroutines.InternalCoroutinesApi
 
 @InternalCoroutinesApi
 public class fragment_grupa_det_studenci() : Fragment(){
 
     private lateinit var currentGroup: Grupa
-    private lateinit var mstudenciViewModel: ViewModel_studenci
+    private lateinit var mStudentViewModel: ViewModel_studenci
     private val sharedViewModel: SharedViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -34,31 +35,24 @@ public class fragment_grupa_det_studenci() : Fragment(){
         val view= inflater.inflate(R.layout.fragment_grupa_det_studenci, container, false)
         currentGroup = sharedViewModel.curGroup.value!!
 
-        //Recycler
-//        val adapter = AdapterStudenci()
-//        val recyclerGrupy = view.recycler_grupy
-//        recyclerGrupy.adapter = adapter
-//        recyclerGrupy.layoutManager = LinearLayoutManager(requireContext())
-//
-//        // ViewModel
-        mstudenciViewModel = ViewModelProvider(this).get(ViewModel_studenci::class.java)
-//        mstudenciViewModel.getGroupStudents(currentGroup).observe(viewLifecycleOwner, Observer {
-//                grupa -> adapter.setData(grupa)
-//        })
-        mstudenciViewModel.getGroupStudents(currentGroup)
-        mstudenciViewModel.returnedVal.observe(viewLifecycleOwner, Observer {
-            Log.d("CROSS", mstudenciViewModel.returnedVal.value!![0].grupa.Nazwa )
+        // Recyclerview
+        val adapter = AdapterStudenciWGrupie()
+        val recyclerStudenci = view.recycler_studenciWGrupie
+        recyclerStudenci.adapter = adapter
+        recyclerStudenci.layoutManager = LinearLayoutManager(requireContext())
 
+        // ViewModel
+        mStudentViewModel = ViewModelProvider(this).get(ViewModel_studenci::class.java)
+        mStudentViewModel.getStudenciWGrupie(currentGroup).observe(viewLifecycleOwner, Observer {
+                student -> adapter.setData(student)
         })
-//
+
 
 
         view.btn_enrolment.setOnClickListener {
             val action = fragment_grupa_detailsDirections.actionFragmentGrupaDetailsToFragmentEnrolment(currentGroup)
             view.findNavController().navigate(action)
         }
-
-
 
         return view
     }

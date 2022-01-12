@@ -1,5 +1,6 @@
 package com.example.assistant
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,8 +12,7 @@ import com.example.assistant.Model.Student
 import kotlinx.android.synthetic.main.recycler_item_studenci.view.*
 
 class AdapterStudenciWGrupie:RecyclerView.Adapter<AdapterStudenciWGrupie.Holder>() {
-
-    private var studenci = emptyList<StudenciWGrupie>()
+    private var studenci = emptyList<Student>()
     inner class Holder(itemView: View): RecyclerView.ViewHolder(itemView){
         val textViewImie: TextView
         val textViewNazwisko: TextView
@@ -36,22 +36,21 @@ class AdapterStudenciWGrupie:RecyclerView.Adapter<AdapterStudenciWGrupie.Holder>
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-//        holder.textViewNazwisko.text=studenci[position].
-//        holder.textViewImie.text=studenci[position].imie
-//        holder.textViewNrAlbumu.text=studenci[position].nr_albumu
+        holder.textViewNazwisko.text=studenci[position].nazwisko
+        holder.textViewImie.text=studenci[position].imie
+        holder.textViewNrAlbumu.text=studenci[position].nr_albumu
 
-//        holder.itemView.item_student.setOnClickListener {
-//            val action = fragment_tabsDirections.actionFragmentTabsToFragmentStudentDetails(studenci[position])
-//            holder.itemView.findNavController().navigate(action)
-//        }
-
+        holder.itemView.item_student.setOnClickListener {
+            val action = fragment_grupa_detailsDirections.actionFragmentGrupaDetailsToFragmentStudentDetails(studenci[position])
+            holder.itemView.findNavController().navigate(action)
+        }
     }
 
     override fun getItemCount()=studenci.count()
 
-//    fun setData(studenci_zewn: List<Student>){
-//        this.studenci = studenci_zewn
-//        notifyDataSetChanged()
-//    }
+    fun setData(studenci_zewn: List<StudenciWGrupie>){
+        this.studenci = studenci_zewn[0].studenci
+        notifyDataSetChanged()
+    }
 
 }

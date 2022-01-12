@@ -34,9 +34,11 @@ interface mainDAO {
     @Query("SELECT * FROM grupa_table WHERE grupaId = :grupaId ORDER BY grupaId ASC")
     fun getStudenciWGrupie(grupaId: Int): LiveData<List<StudenciWGrupie>>
 
+    @Transaction
     @Query("SELECT * FROM student_table WHERE studentId = :studentId ORDER BY nazwisko ASC")
     fun getGrupyStudenta(studentId: Int): LiveData<List<GrupyStudenta>>
 
+    @Transaction
     @Query("SELECT * FROM GrupaStudentCross ORDER BY grupaId ASC")
     fun getAllEnrolments(): LiveData<List<GrupaStudentCross>>
 
