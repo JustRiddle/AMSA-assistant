@@ -10,15 +10,14 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.assistant.Model.RecyclerCallback
+import com.example.assistant.Model.RecyclerStudentCallback
 import com.example.assistant.Model.Student
 import com.example.assistant.ViewModel.ViewModel_studenci
 import kotlinx.android.synthetic.main.fragment_enrolment.view.*
-import kotlinx.android.synthetic.main.fragment_lista_studenci.view.*
 import kotlinx.coroutines.InternalCoroutinesApi
 
 @InternalCoroutinesApi
-class fragment_enrolment : Fragment(), RecyclerCallback {
+class fragment_enrolment : Fragment(), RecyclerStudentCallback {
 
 
     private val args by navArgs<fragment_enrolmentArgs>()

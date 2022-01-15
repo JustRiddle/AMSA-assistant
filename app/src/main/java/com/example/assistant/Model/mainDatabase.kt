@@ -11,7 +11,8 @@ import kotlinx.coroutines.internal.synchronized
     entities = [
         Student::class,
         Grupa::class,
-        GrupaStudentCross::class
+        GrupaStudentCross::class,
+        Ocena::class
     ],
     version = 1,
     exportSchema = false)
@@ -33,7 +34,7 @@ abstract class mainDatabase: RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     mainDatabase::class.java,
-                    "T2"
+                    "T1"
                 ).build()
                 INSTANCE = instance
                 return instance

@@ -1,25 +1,17 @@
 package com.example.assistant
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
-import androidx.lifecycle.viewModelScope
 import com.example.assistant.Model.*
-import com.example.assistant.ViewModel.ViewModel_studenci
-import kotlinx.android.synthetic.main.fragment_dodaj_studenta.*
-import kotlinx.android.synthetic.main.fragment_grupa_det_studenci.view.*
-import kotlinx.android.synthetic.main.recycler_item_studenci.view.*
 import kotlinx.android.synthetic.main.recycler_item_zapisy.view.*
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.InternalCoroutinesApi
 
 
 @InternalCoroutinesApi
-class AdapterEnrolment(private val listener: RecyclerCallback): RecyclerView.Adapter<AdapterEnrolment.Holder>() {
+class AdapterEnrolment(private val listener: RecyclerStudentCallback): RecyclerView.Adapter<AdapterEnrolment.Holder>() {
 
 
     private var studenci = emptyList<Student>()

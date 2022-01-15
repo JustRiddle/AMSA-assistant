@@ -42,5 +42,16 @@ interface mainDAO {
     @Query("SELECT * FROM GrupaStudentCross ORDER BY grupaId ASC")
     fun getAllEnrolments(): LiveData<List<GrupaStudentCross>>
 
+    /** OCENY */
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun addOcena(ocena: Ocena)
 
+    @Update
+    suspend fun updateOcena(ocena: Ocena)
+
+    @Query("SELECT * FROM ocena_table WHERE studentID = :studentID AND grupaID = :grupaID ORDER BY ocenaID ASC")
+    fun getOceny(studentID: Int, grupaID: Int): LiveData<List<Ocena>>
+
+    @Query("SELECT * FROM ocena_table ORDER BY ocenaID ASC")
+    fun getAllOceny(): LiveData<List<Ocena>>
 }

@@ -20,13 +20,13 @@ class MainActivity : AppCompatActivity(){
         Spotkanie("18.01.2021", "Walki robotów- konstrukcje własne"),
         Spotkanie("25.01.2021", "Gitary")
     )
-    val oceny = mutableListOf<Ocena>(
-        Ocena("5.0", "Kolokwium 1 A tak w zasadzie to zastanawiam się ja on się zachowa przy takim bardzo długim tekście"),
-        Ocena("25/30", "Projekt 1")
-    )
+//    val oceny = mutableListOf<Ocena>(
+//        Ocena("5.0", "Kolokwium 1 A tak w zasadzie to zastanawiam się ja on się zachowa przy takim bardzo długim tekście"),
+//        Ocena("25/30", "Projekt 1")
+//    )
 
     val SpotkaniaAdapter=AdapterSpotkania(spotkania)
-    val OcenyAdapter = AdapterOceny(oceny)
+//    val OcenyAdapter = AdapterOceny(oceny)
 
     ////////////////   ^   Do odstrzału   ^   ////////////////
 

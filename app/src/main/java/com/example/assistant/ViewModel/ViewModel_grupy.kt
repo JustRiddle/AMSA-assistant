@@ -2,8 +2,12 @@ package com.example.assistant.ViewModel
 
 import android.app.Application
 import android.util.Log
+import android.view.View
+import android.widget.AdapterView
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.assistant.Model.*
 import kotlinx.coroutines.Dispatchers
@@ -21,6 +25,7 @@ class ViewModel_grupy(application: Application): AndroidViewModel(application) {
     init {
         repository = mainRepository(mainDAO)
         getAllGroups = repository.getAllGroups
+
     }
 
     fun addGroup(grupa: Grupa){
@@ -35,10 +40,12 @@ class ViewModel_grupy(application: Application): AndroidViewModel(application) {
         }
     }
 
-    fun getGrupyStudenta(grupa: Grupa):LiveData<List<StudenciWGrupie>>{
-        Log.d("WEWNETRZNIE","BARDZO")
-        val StudenciWGrupie:LiveData<List<StudenciWGrupie>> = mainDAO.getStudenciWGrupie(grupa.grupaId)
-        return StudenciWGrupie
+    fun getGrupyStudenta(student: Student):LiveData<List<GrupyStudenta>>{
+        val GrupyStudenta:LiveData<List<GrupyStudenta>> = mainDAO.getGrupyStudenta(student.studentId)
+        return GrupyStudenta
     }
+
+
+
 
 }

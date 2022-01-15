@@ -26,7 +26,12 @@ class mainRepository(private  val mainDAO: mainDAO) {
         mainDAO.addEnrolment(GrupaStudentCross(grupa.grupaId,student.studentId))
     }
 
-    suspend fun getStudenciWGrupie(grupa: Grupa): LiveData<List<StudenciWGrupie>> {
-       return mainDAO.getStudenciWGrupie(grupa.grupaId)
+
+    suspend fun addOcena(ocena: Ocena){
+        mainDAO.addOcena(ocena)
+    }
+
+    suspend fun updateOcena(ocena: Ocena) {
+        mainDAO.updateOcena(ocena)
     }
 }

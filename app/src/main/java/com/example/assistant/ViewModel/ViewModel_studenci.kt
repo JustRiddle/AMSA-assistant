@@ -42,12 +42,30 @@ class ViewModel_studenci(application: Application): AndroidViewModel(application
         }
     }
 
+    fun addOcena(ocena: Ocena){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.addOcena(ocena)
+        }
+    }
+
+    fun updateOcena(ocena: Ocena){
+        viewModelScope.launch(Dispatchers.IO){
+            repository.updateOcena(ocena)
+        }
+    }
+
 
 
     fun getStudenciWGrupie(grupa: Grupa):LiveData<List<StudenciWGrupie>>{
-        Log.d("WEWNETRZNIE","BARDZO")
         val StudenciWGrupie:LiveData<List<StudenciWGrupie>> = mainDAO.getStudenciWGrupie(grupa.grupaId)
         return StudenciWGrupie
+    }
+
+    fun getOceny(grupa: Grupa, student: Student):LiveData<List<Ocena>>{
+        Log.d("PRZYCHODZACE","CO DO "+grupa.toString()+" KURWY")
+        val ocenki:LiveData<List<Ocena>> = mainDAO.getOceny(student.studentId, grupa.grupaId)
+        Log.d("Z VMa", ocenki.value.toString() )
+        return ocenki
     }
 
 }

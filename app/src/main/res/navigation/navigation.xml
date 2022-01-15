@@ -58,6 +58,9 @@
         <argument
             android:name="currentStudent"
             app:argType="com.example.assistant.Model.Student" />
+        <action
+            android:id="@+id/action_fragment_student_details_to_fragment_edytuj_ocene"
+            app:destination="@id/fragment_edytuj_ocene" />
     </fragment>
     <fragment
         android:id="@+id/fragment_grupa_details"
@@ -101,6 +104,12 @@
             app:destination="@id/fragment_student_details"
             app:popUpTo="@id/fragment_student_details"
             app:popUpToInclusive="true" />
+        <argument
+            android:name="currentStudent"
+            app:argType="com.example.assistant.Model.Student" />
+        <argument
+            android:name="currentGroup"
+            app:argType="com.example.assistant.Model.Grupa" />
     </fragment>
     <fragment
         android:id="@+id/fragment_edytuj_studenta"
@@ -141,5 +150,19 @@
         <argument
             android:name="currentGroup"
             app:argType="com.example.assistant.Model.Grupa" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_edytuj_ocene"
+        android:name="com.example.assistant.fragment_edytuj_ocene"
+        android:label="fragment_edytuj_ocene"
+        tools:layout="@layout/fragment_edytuj_ocene" >
+        <action
+            android:id="@+id/action_fragment_edytuj_ocene_to_fragment_student_details"
+            app:destination="@id/fragment_student_details"
+            app:popUpTo="@id/fragment_student_details"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="currentOcena"
+            app:argType="com.example.assistant.Model.Ocena" />
     </fragment>
 </navigation>

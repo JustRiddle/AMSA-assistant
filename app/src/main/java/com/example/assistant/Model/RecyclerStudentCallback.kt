@@ -3,7 +3,7 @@ package com.example.assistant.Model
 import android.view.View
 
 
-interface RecyclerCallback {
+interface RecyclerStudentCallback {
     fun onItemClick(student: Student)
 }
 

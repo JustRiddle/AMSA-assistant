@@ -1,5 +1,6 @@
 package com.example.assistant
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,8 +10,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.assistant.Model.Ocena
 import com.example.assistant.Model.Spotkanie
 import com.example.assistant.Model.Student
+import kotlinx.android.synthetic.main.recycler_item_grupy.view.*
+import kotlinx.android.synthetic.main.recycler_item_ocena.view.*
 
-class AdapterOceny(val oceny: List<Ocena>):RecyclerView.Adapter<AdapterOceny.Holder>() {
+class AdapterOceny():RecyclerView.Adapter<AdapterOceny.Holder>() {
+
+    private var oceny = emptyList<Ocena>()
     inner class Holder(itemView: View): RecyclerView.ViewHolder(itemView){
         val textViewOcena: TextView
         val textViewKomentarz: TextView
@@ -19,11 +24,6 @@ class AdapterOceny(val oceny: List<Ocena>):RecyclerView.Adapter<AdapterOceny.Hol
         init {
             textViewOcena = itemView.findViewById<TextView>(R.id.textView_ocena)
             textViewKomentarz = itemView.findViewById<TextView>(R.id.textView_zaCo)
-
-            itemView.setOnClickListener {
-                // TODO Wrzucić tutaj nav do widoku obecności
-                //  it.findNavController().navigate(R.id.action_fragment_tabs_to_fragment_student_details)
-            }
         }
 
     }
@@ -39,8 +39,19 @@ class AdapterOceny(val oceny: List<Ocena>):RecyclerView.Adapter<AdapterOceny.Hol
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.textViewOcena.text=oceny[position].ocena
         holder.textViewKomentarz.text=oceny[position].komentarz
+
+        holder.itemView.item_ocena.setOnClickListener {
+            val action = fragment_student_detailsDirections.actionFragmentStudentDetailsToFragmentEdytujOcene(oceny[position])
+            holder.itemView.findNavController().navigate(action)
+        }
     }
 
     override fun getItemCount()=oceny.count()
+
+    fun setData(oceny_zewn: List<Ocena>){
+        Log.d("MOJE", "AdapterOceny dostał: "+oceny_zewn.toString())
+        this.oceny = oceny_zewn
+        notifyDataSetChanged()
+    }
 
 }

@@ -1,81 +1,59 @@
 package com.example.assistant
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.assistant.ViewModel.SharedViewModel
+import com.example.assistant.ViewModel.ViewModel_studenci
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [fragment_student_det_oceny.newInstance] factory method to
- * create an instance of this fragment.
- */
+import kotlinx.android.synthetic.main.fragment_lista_studenci.view.*
+import kotlinx.android.synthetic.main.fragment_student_det_oceny.view.*
+import kotlinx.coroutines.InternalCoroutinesApi
+@InternalCoroutinesApi
 class fragment_student_det_oceny : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    lateinit var ocenyAdapter: AdapterOceny
-    lateinit var OclayoutManager: LinearLayoutManager
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-        ocenyAdapter=(activity as MainActivity).OcenyAdapter
-
-    }
+    private lateinit var mStudentViewModel: ViewModel_studenci
+    private val sharedViewModel: SharedViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_student_det_oceny, container, false)
-    }
+        val view = inflater.inflate(R.layout.fragment_student_det_oceny, container, false)
+        Log.d("MOJE", "TUTAJ SIĘ POJAWIĄ OCENKI")
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        (view.findViewById<FloatingActionButton>(R.id.btn_nowa_ocena)).setOnClickListener{
-            it.findNavController().navigate(R.id.action_fragment_student_details_to_fragment_dodaj_ocene)
+
+
+
+        // Recyclerview
+        val adapter = AdapterOceny()
+        val recyclerStudenci = view.recycler_oceny
+        recyclerStudenci.adapter = adapter
+        recyclerStudenci.layoutManager = LinearLayoutManager(requireContext())
+
+        // ViewModel
+        mStudentViewModel = ViewModelProvider(this).get(ViewModel_studenci::class.java)
+        mStudentViewModel.getOceny(sharedViewModel.curGroup.value!!, sharedViewModel.curStudent.value!!).observe(viewLifecycleOwner, Observer {
+                ocena -> adapter.setData(ocena)
+            Log.d("Takie mi wrzuciło", ocena.toString())
+        })
+
+
+        view.btn_nowa_ocena.setOnClickListener{
+            val action = fragment_student_detailsDirections.actionFragmentStudentDetailsToFragmentDodajOcene(sharedViewModel.curStudent.value!!,sharedViewModel.curGroup.value!!)
+            view.findNavController().navigate(action)
         }
-
-        OclayoutManager= LinearLayoutManager(context)
-        view.findViewById<RecyclerView>(R.id.recycler_oceny).apply {
-            adapter=ocenyAdapter
-            layoutManager=OclayoutManager
-        }
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment fragment_student_det_oceny.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            fragment_student_det_oceny().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 }

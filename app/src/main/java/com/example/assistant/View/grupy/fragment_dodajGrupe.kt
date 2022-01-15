@@ -31,6 +31,18 @@ class fragment_dodajGrupe : Fragment() {
     ): View? {
         val view =inflater.inflate(R.layout.fragment_dodaj_grupe, container, false)
 
+        val spinner = view.findViewById<Spinner>(R.id.spinner_dni)
+
+        /** Obsługa spinnera */
+        ArrayAdapter.createFromResource(
+            requireActivity(),
+            R.array.dni_tygodnia,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinner.adapter = adapter
+        }
+
         mGrupyViewModel = ViewModelProvider(this).get(ViewModel_grupy::class.java)
         view.btn_dodajGrupe.setOnClickListener {
             insertDataToDatabase()
@@ -64,22 +76,4 @@ class fragment_dodajGrupe : Fragment() {
         return !(TextUtils.isEmpty(nazwa) && TextUtils.isEmpty(godz_do) && TextUtils.isEmpty(godz_od))
     }
 
-
-
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        val spinner = view.findViewById<Spinner>(R.id.spinner_dni)
-
-        /** Obsługa spinnera */
-        ArrayAdapter.createFromResource(
-            requireActivity(),
-            R.array.dni_tygodnia,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spinner.adapter = adapter
-        }
-    }
 }

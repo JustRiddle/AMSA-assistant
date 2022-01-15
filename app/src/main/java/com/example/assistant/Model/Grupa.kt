@@ -14,4 +14,6 @@ data class Grupa(
     val dzien_tygodnia:String,
     val godz_od:String,
     val godz_do:String
-    ): Parcelable
+    ): Parcelable{
+        override fun toString(): String { return Nazwa }
+    }

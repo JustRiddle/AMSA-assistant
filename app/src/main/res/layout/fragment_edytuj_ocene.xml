@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout4"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment_dodaj_ocene">
+    tools:context=".fragment_edytuj_ocene">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -21,17 +21,17 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <TextView
-        android:id="@+id/text_ImieNazwisko_dodajOcene"
+        android:id="@+id/text_ImieNazwisko_zmienOcene"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="Imię nazwisko"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_nazwaGr_dodajOcene" />
+        app:layout_constraintTop_toBottomOf="@+id/text_nazwaGr_zmienOcene" />
 
     <TextView
-        android:id="@+id/text_nazwaGr_dodajOcene"
+        android:id="@+id/text_nazwaGr_zmienOcene"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -41,7 +41,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/edit_ocena"
+        android:id="@+id/edit_ocena_zmiana"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -60,19 +60,19 @@
         android:text="Ocena"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_ImieNazwisko_dodajOcene" />
+        app:layout_constraintTop_toBottomOf="@+id/text_ImieNazwisko_zmienOcene" />
 
     <Button
-        android:id="@+id/btn_dodajOcene"
+        android:id="@+id/btn_zmienOcene"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:text="Dodaj"
+        android:text="Zapisz"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText_OcenaKomentarz"
+        android:id="@+id/editText_OcenaKomentarz_zmiana"
         android:layout_width="0sp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
