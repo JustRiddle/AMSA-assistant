@@ -11,17 +11,14 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.assistant.ViewModel.SharedViewModel
-import com.example.assistant.ViewModel.ViewModel_studenci
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import kotlinx.android.synthetic.main.fragment_lista_studenci.view.*
+import com.example.assistant.ViewModel.ViewModel_Main
 import kotlinx.android.synthetic.main.fragment_student_det_oceny.view.*
 import kotlinx.coroutines.InternalCoroutinesApi
 @InternalCoroutinesApi
 class fragment_student_det_oceny : Fragment() {
 
-    private lateinit var mStudentViewModel: ViewModel_studenci
+    private lateinit var mStudentViewModel: ViewModel_Main
     private val sharedViewModel: SharedViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -42,7 +39,7 @@ class fragment_student_det_oceny : Fragment() {
         recyclerStudenci.layoutManager = LinearLayoutManager(requireContext())
 
         // ViewModel
-        mStudentViewModel = ViewModelProvider(this).get(ViewModel_studenci::class.java)
+        mStudentViewModel = ViewModelProvider(this).get(ViewModel_Main::class.java)
         mStudentViewModel.getOceny(sharedViewModel.curGroup.value!!, sharedViewModel.curStudent.value!!).observe(viewLifecycleOwner, Observer {
                 ocena -> adapter.setData(ocena)
             Log.d("Takie mi wrzuciło", ocena.toString())

@@ -1,53 +1,60 @@
 package com.example.assistant
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.assistant.Model.Grupa
+import com.example.assistant.ViewModel.SharedViewModel
+import com.example.assistant.ViewModel.ViewModel_Main
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.android.synthetic.main.fragment_grupa_det_spotkania.view.*
+import kotlinx.android.synthetic.main.fragment_grupa_det_studenci.view.*
+import kotlinx.coroutines.InternalCoroutinesApi
 
-
+@InternalCoroutinesApi
 class fragment_grupa_det_spotkania : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-    lateinit var spotkaniaAdapter: AdapterSpotkania
-    lateinit var SplayoutManager:LinearLayoutManager
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    private val sharedViewModel: SharedViewModel by activityViewModels()
+    private lateinit var currentGroup: Grupa
+    private lateinit var mStudentViewModel: ViewModel_Main
 
-        spotkaniaAdapter=(activity as MainActivity).SpotkaniaAdapter.apply {
-            obecnosc = ""
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_grupa_det_spotkania, container, false)
-    }
+        val view = inflater.inflate(R.layout.fragment_grupa_det_spotkania, container, false)
+        currentGroup = sharedViewModel.curGroup.value!!
+        Log.d("MOJE" ,"ZACZYNAM")
+        // Recyclerview
+        val adapter = AdapterSpotkania()
+        val recyclerStudenci = view.recycler_spotkania
+        recyclerStudenci.adapter = adapter
+        recyclerStudenci.layoutManager = LinearLayoutManager(requireContext())
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        (view.findViewById<FloatingActionButton>(R.id.btn_nowe_spotkanie)).setOnClickListener{
-            it.findNavController().navigate(R.id.action_fragment_grupa_details_to_fragment_dodaj_spotkanie)
+        // ViewModel
+        mStudentViewModel = ViewModelProvider(this).get(ViewModel_Main::class.java)
+        mStudentViewModel.getSpotkania(currentGroup).observe(viewLifecycleOwner, Observer {
+                spotkania -> adapter.setData(spotkania)
+        })
+
+        Log.d("MOJE" ,"Koncze")
+
+        view.btn_nowe_spotkanie.setOnClickListener {
+            val action = fragment_grupa_detailsDirections.actionFragmentGrupaDetailsToFragmentDodajSpotkanie(currentGroup)
+            view.findNavController().navigate(action)
         }
-
-        SplayoutManager= LinearLayoutManager(context)
-        view.findViewById<RecyclerView>(R.id.recycler_spotkania).apply {
-            adapter=spotkaniaAdapter
-            layoutManager=SplayoutManager
-        }
+        return view
     }
-
-
-
 
 }

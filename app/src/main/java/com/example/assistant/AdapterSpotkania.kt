@@ -1,5 +1,7 @@
 package com.example.assistant
 
+import android.graphics.Color
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,9 +10,11 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.assistant.Model.Spotkanie
 import com.example.assistant.Model.Student
+import java.lang.Exception
 
-class AdapterSpotkania(val spotkania: List<Spotkanie>):RecyclerView.Adapter<AdapterSpotkania.Holder>() {
-    lateinit var obecnosc: String
+class AdapterSpotkania():RecyclerView.Adapter<AdapterSpotkania.Holder>() {
+    private var spotkania = emptyList<Spotkanie>()
+    private var studentID = 0
     inner class Holder(itemView: View): RecyclerView.ViewHolder(itemView){
         val textViewData: TextView
         val textViewTemat: TextView
@@ -22,10 +26,6 @@ class AdapterSpotkania(val spotkania: List<Spotkanie>):RecyclerView.Adapter<Adap
             textViewTemat = itemView.findViewById<TextView>(R.id.textView_Temat)
             textViewObecnosc = itemView.findViewById<TextView>(R.id.textView_obecnosc)
 
-            itemView.setOnClickListener {
-                // TODO Wrzucić tutaj nav do widoku obecności
-            //  it.findNavController().navigate(R.id.action_fragment_tabs_to_fragment_student_details)
-            }
         }
 
     }
@@ -41,9 +41,42 @@ class AdapterSpotkania(val spotkania: List<Spotkanie>):RecyclerView.Adapter<Adap
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.textViewData.text=spotkania[position].data
         holder.textViewTemat.text=spotkania[position].temat
-        holder.textViewObecnosc.text = obecnosc
+
+        if(studentID == 0) {
+            holder.textViewObecnosc.text = ""
+        }
+        else {
+            if(spotkania[position].obecnosc.contains(studentID)) {
+                holder.textViewObecnosc.setTextColor(Color.parseColor("#75e900"))
+                holder.textViewObecnosc.text = "✔"
+            }
+            else{
+
+                holder.textViewObecnosc.setTextColor(Color.parseColor("#B71C1C"))
+                holder.textViewObecnosc.text = "X"
+            }
+        }
+
+
+        holder.itemView.setOnClickListener {
+            if(studentID == 0) {
+                val action =
+                    fragment_grupa_detailsDirections.actionFragmentGrupaDetailsToFragmentEdytujSpotkanie(
+                        spotkania[position]
+                    )
+                holder.itemView.findNavController().navigate(action)
+            }
+        }
     }
 
     override fun getItemCount()=spotkania.count()
+
+    fun setData(spotkania_zewn: List<Spotkanie>, studentId: Int = 0){
+        this.spotkania = spotkania_zewn
+        this.studentID = studentId
+        Log.d("MOJE" ,"SETDATA")
+
+        notifyDataSetChanged()
+    }
 
 }

@@ -8,22 +8,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.assistant.Model.Grupa
-import com.example.assistant.Model.Student
-import com.example.assistant.ViewModel.ViewModel_grupy
-import com.example.assistant.ViewModel.ViewModel_studenci
+import com.example.assistant.ViewModel.ViewModel_Main
 import kotlinx.android.synthetic.main.fragment_dodaj_grupe.*
 import kotlinx.android.synthetic.main.fragment_dodaj_grupe.view.*
-import kotlinx.android.synthetic.main.fragment_dodaj_studenta.*
-import kotlinx.android.synthetic.main.fragment_dodaj_studenta.view.*
 import kotlinx.coroutines.InternalCoroutinesApi
 
 @InternalCoroutinesApi
 class fragment_dodajGrupe : Fragment() {
 
-    private lateinit var mGrupyViewModel: ViewModel_grupy
+    private lateinit var mViewModel: ViewModel_Main
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,7 +38,7 @@ class fragment_dodajGrupe : Fragment() {
             spinner.adapter = adapter
         }
 
-        mGrupyViewModel = ViewModelProvider(this).get(ViewModel_grupy::class.java)
+        mViewModel = ViewModelProvider(this).get(ViewModel_Main::class.java)
         view.btn_dodajGrupe.setOnClickListener {
             insertDataToDatabase()
         }
@@ -63,7 +58,7 @@ class fragment_dodajGrupe : Fragment() {
             val grupa = Grupa(0, nazwa, dzien, godz_od, godz_do)
 
             // Dodanie do bazy
-            mGrupyViewModel.addGroup(grupa)
+            mViewModel.addGroup(grupa)
             Toast.makeText(requireContext(), "Grupa dodana!", Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_fragment_dodajGrupe_to_fragment_tabs)
 

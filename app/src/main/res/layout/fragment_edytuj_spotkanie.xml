@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout4"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment_dodaj_spotkanie">
+    tools:context=".fragment_edytuj_spotkanie">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -23,7 +23,7 @@
 
 
     <EditText
-        android:id="@+id/edit_dataSpotkania"
+        android:id="@+id/edit_dataSpotkania_zmiana"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -45,7 +45,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btn_dodajSpotkanie"
+        android:id="@+id/btn_zmienSpotkanie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -54,7 +54,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText_temat"
+        android:id="@+id/editText_temat_zmiana"
         android:layout_width="0sp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -76,10 +76,10 @@
         android:text="Obecność"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_temat" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_temat_zmiana" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_obecnosci"
+        android:id="@+id/recycler_obecnosci_zmiana"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"

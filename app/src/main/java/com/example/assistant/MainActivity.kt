@@ -15,19 +15,12 @@ import com.example.assistant.Model.Student
 
 class MainActivity : AppCompatActivity(){
 
-    val spotkania = mutableListOf<Spotkanie>(
-        Spotkanie("11.01.2021", "Pojazd czterokołowy ze skrętną przeednią osią"),
-        Spotkanie("18.01.2021", "Walki robotów- konstrukcje własne"),
-        Spotkanie("25.01.2021", "Gitary")
-    )
-//    val oceny = mutableListOf<Ocena>(
-//        Ocena("5.0", "Kolokwium 1 A tak w zasadzie to zastanawiam się ja on się zachowa przy takim bardzo długim tekście"),
-//        Ocena("25/30", "Projekt 1")
+//    val spotkania = mutableListOf<Spotkanie>(
+//        Spotkanie(1,"11.01.2021", "Pojazd czterokołowy ze skrętną przeednią osią"),
+//        Spotkanie(1,"18.01.2021", "Walki robotów- konstrukcje własne"),
+//        Spotkanie(1,"25.01.2021", "Gitary")
 //    )
-
-    val SpotkaniaAdapter=AdapterSpotkania(spotkania)
-//    val OcenyAdapter = AdapterOceny(oceny)
-
+//    val SpotkaniaAdapter=AdapterSpotkania(spotkania)
     ////////////////   ^   Do odstrzału   ^   ////////////////
 
 
@@ -40,8 +33,4 @@ class MainActivity : AppCompatActivity(){
         setupActionBarWithNavController(findNavController(R.id.MainfragmentContainer))
 
     }
-
-
-
-
 }

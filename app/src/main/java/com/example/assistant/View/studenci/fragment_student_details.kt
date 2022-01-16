@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.Button
 import android.widget.Spinner
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -18,18 +17,16 @@ import com.example.assistant.Model.Grupa
 import com.example.assistant.Model.SpinerGroupCallback
 import com.example.assistant.ViewModel.AdapterSpinner
 import com.example.assistant.ViewModel.SharedViewModel
-import com.example.assistant.ViewModel.ViewModel_grupy
-import com.example.assistant.ViewModel.ViewModel_studenci
+import com.example.assistant.ViewModel.ViewModel_Main
 import kotlinx.android.synthetic.main.fragment_student_details.*
 import kotlinx.android.synthetic.main.fragment_student_details.view.*
-import kotlinx.android.synthetic.main.fragment_tabs.*
 import kotlinx.coroutines.InternalCoroutinesApi
 
 @InternalCoroutinesApi
 class fragment_student_details : Fragment(), SpinerGroupCallback {
 
     private val args by navArgs<fragment_student_detailsArgs>()
-    private lateinit var mGrupaViewModel: ViewModel_grupy
+    private lateinit var mViewModel: ViewModel_Main
 
     private lateinit var arrayAdapter: ArrayAdapter<Grupa>
     private val sharedViewModel: SharedViewModel by activityViewModels()
@@ -47,7 +44,7 @@ class fragment_student_details : Fragment(), SpinerGroupCallback {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_student_details, container, false)
-        mGrupaViewModel = ViewModelProvider(this).get(ViewModel_grupy::class.java)
+        mViewModel = ViewModelProvider(this).get(ViewModel_Main::class.java)
 
 
         /** Obsługa spinnera */
@@ -57,7 +54,7 @@ class fragment_student_details : Fragment(), SpinerGroupCallback {
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = arrayAdapter
         spinner.onItemSelectedListener = AdapterSpinner(this)
-        mGrupaViewModel.getGrupyStudenta(args.currentStudent).observe(viewLifecycleOwner, Observer {
+        mViewModel.getGrupyStudenta(args.currentStudent).observe(viewLifecycleOwner, Observer {
 
                 grupy -> arrayAdapter.addAll(grupy[0].grupy)
         })

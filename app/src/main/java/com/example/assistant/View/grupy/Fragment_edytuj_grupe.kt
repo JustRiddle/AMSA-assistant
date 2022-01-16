@@ -14,7 +14,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.assistant.Model.Grupa
 import com.example.assistant.R
-import com.example.assistant.ViewModel.ViewModel_grupy
+import com.example.assistant.ViewModel.ViewModel_Main
 import kotlinx.android.synthetic.main.fragment_edytuj_grupe.*
 import kotlinx.android.synthetic.main.fragment_edytuj_grupe.view.*
 import kotlinx.coroutines.InternalCoroutinesApi
@@ -23,7 +23,7 @@ import kotlinx.coroutines.InternalCoroutinesApi
 class fragment_edytuj_grupe : Fragment() {
 
     private val args by navArgs<fragment_edytuj_grupeArgs>()
-    private lateinit var mGrupyViewModel: ViewModel_grupy
+    private lateinit var mViewModel: ViewModel_Main
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,7 +32,7 @@ class fragment_edytuj_grupe : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_edytuj_grupe, container, false)
 
-        mGrupyViewModel = ViewModelProvider(this).get(ViewModel_grupy::class.java)
+        mViewModel = ViewModelProvider(this).get(ViewModel_Main::class.java)
         view.edit_nazwaGrupy_zmiana.setText(args.currentGroup.Nazwa)
 
         view.time_od_zmiana.setText(args.currentGroup.godz_od)
@@ -61,7 +61,7 @@ class fragment_edytuj_grupe : Fragment() {
             val grupa = Grupa(args.currentGroup.grupaId, nazwa, dzien, godz_od, godz_do)
 
             // Dodanie do bazy
-            mGrupyViewModel.updateGrupa(grupa)
+            mViewModel.updateGrupa(grupa)
             Toast.makeText(requireContext(), "Grupa zaktualizowana!", Toast.LENGTH_SHORT).show()
             return true
 

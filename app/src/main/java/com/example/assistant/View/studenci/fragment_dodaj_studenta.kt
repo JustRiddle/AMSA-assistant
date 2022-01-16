@@ -10,7 +10,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.assistant.Model.Student
-import com.example.assistant.ViewModel.ViewModel_studenci
+import com.example.assistant.ViewModel.ViewModel_Main
 import kotlinx.android.synthetic.main.fragment_dodaj_studenta.*
 import kotlinx.android.synthetic.main.fragment_dodaj_studenta.view.*
 import kotlinx.coroutines.InternalCoroutinesApi
@@ -19,7 +19,7 @@ import kotlinx.coroutines.InternalCoroutinesApi
 class dodajStudenta : Fragment() {
 
 
-    private lateinit var mStudentViewModel: ViewModel_studenci
+    private lateinit var mStudentViewModel: ViewModel_Main
 
 
     override fun onCreateView(
@@ -28,7 +28,7 @@ class dodajStudenta : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_dodaj_studenta, container, false)
 
-        mStudentViewModel = ViewModelProvider(this).get(ViewModel_studenci::class.java)
+        mStudentViewModel = ViewModelProvider(this).get(ViewModel_Main::class.java)
         view.btn_dodajStudenta.setOnClickListener {
             insertDataToDatabase()
         }

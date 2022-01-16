@@ -27,6 +27,9 @@ interface mainDAO {
     @Query("SELECT * FROM grupa_table ORDER BY grupaId ASC")
     fun getAllGroups(): LiveData<List<Grupa>>
 
+    @Query("SELECT * FROM grupa_table ORDER BY grupaId ASC")
+    fun getGroup(): LiveData<List<Grupa>>
+
     /** STUDENCI x GRUPY */
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun addEnrolment(crossRef: GrupaStudentCross)
@@ -54,4 +57,16 @@ interface mainDAO {
 
     @Query("SELECT * FROM ocena_table ORDER BY ocenaID ASC")
     fun getAllOceny(): LiveData<List<Ocena>>
+
+    /** SPOTKANIA */
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun addSpotkanie(spotkanie: Spotkanie)
+
+    @Update
+    suspend fun updateSpotkanie(spotkanie: Spotkanie)
+
+    @Query("SELECT * FROM spotkanie WHERE grupaID = :grupaID ORDER BY spotkanieId ASC")
+    fun getSpotkania(grupaID: Int): LiveData<List<Spotkanie>>
+
 }

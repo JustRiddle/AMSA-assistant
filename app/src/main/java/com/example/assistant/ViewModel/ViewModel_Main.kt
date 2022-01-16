@@ -12,9 +12,10 @@ import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.launch
 
 @InternalCoroutinesApi
-class ViewModel_studenci(application: Application): AndroidViewModel(application) {
+class ViewModel_Main(application: Application): AndroidViewModel(application) {
 
     val getAllStudents: LiveData<List<Student>>
+    val getAllGroups: LiveData<List<Grupa>>
     private val repository: mainRepository
     private val mainDAO :mainDAO = mainDatabase.getDatabase(application).mainDAO()
 
@@ -22,6 +23,7 @@ class ViewModel_studenci(application: Application): AndroidViewModel(application
     init {
         repository = mainRepository(mainDAO)
         getAllStudents = repository.getAllStudents
+        getAllGroups = repository.getAllGroups
     }
 
     fun addStudent(student: Student){
@@ -35,6 +37,32 @@ class ViewModel_studenci(application: Application): AndroidViewModel(application
             repository.updateStudent(student)
         }
     }
+
+    fun addGroup(grupa: Grupa){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.addGroup(grupa)
+        }
+    }
+
+    fun updateGrupa(grupa: Grupa){
+        viewModelScope.launch(Dispatchers.IO){
+            repository.updateGroup(grupa)
+        }
+    }
+
+    fun getGrupabyID(groupID: Int):LiveData<List<Grupa>>{
+        val Grupa:LiveData<List<Grupa>> = mainDAO.getAllGroups()
+        return Grupa
+    }
+
+    fun getGrupyStudenta(student: Student):LiveData<List<GrupyStudenta>>{
+        val GrupyStudenta:LiveData<List<GrupyStudenta>> = mainDAO.getGrupyStudenta(student.studentId)
+        return GrupyStudenta
+    }
+
+
+
+
 
     fun addEnrolment(grupa: Grupa, student: Student){
         viewModelScope.launch(Dispatchers.IO) {
@@ -66,6 +94,23 @@ class ViewModel_studenci(application: Application): AndroidViewModel(application
         val ocenki:LiveData<List<Ocena>> = mainDAO.getOceny(student.studentId, grupa.grupaId)
         Log.d("Z VMa", ocenki.value.toString() )
         return ocenki
+    }
+
+    fun addSpotkanie(spotkanie: Spotkanie){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.addSpotkanie(spotkanie)
+        }
+    }
+
+    fun updateSpotkanie(spotkanie: Spotkanie){
+        viewModelScope.launch(Dispatchers.IO){
+            repository.updateSpotkanie(spotkanie)
+        }
+    }
+
+    fun getSpotkania(grupa: Grupa):LiveData<List<Spotkanie>>{
+        val spotkania:LiveData<List<Spotkanie>> = mainDAO.getSpotkania(grupa.grupaId)
+        return spotkania
     }
 
 }

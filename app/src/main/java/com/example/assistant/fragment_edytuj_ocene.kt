@@ -9,20 +9,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.assistant.Model.Ocena
-import com.example.assistant.View.studenci.fragment_edytuj_studentaArgs
-import com.example.assistant.View.studenci.fragment_edytuj_studentaDirections
 import com.example.assistant.ViewModel.SharedViewModel
-import com.example.assistant.ViewModel.ViewModel_studenci
-import kotlinx.android.synthetic.main.fragment_dodaj_ocene.*
-import kotlinx.android.synthetic.main.fragment_dodaj_ocene.edit_ocena
-import kotlinx.android.synthetic.main.fragment_dodaj_ocene.view.*
+import com.example.assistant.ViewModel.ViewModel_Main
 import kotlinx.android.synthetic.main.fragment_edytuj_ocene.*
 import kotlinx.android.synthetic.main.fragment_edytuj_ocene.view.*
-import kotlinx.android.synthetic.main.fragment_edytuj_studenta.view.*
 import kotlinx.coroutines.InternalCoroutinesApi
 
 @InternalCoroutinesApi
@@ -30,7 +23,7 @@ class fragment_edytuj_ocene : Fragment() {
 
     private val args by navArgs<fragment_edytuj_oceneArgs>()
     private val sharedViewModel: SharedViewModel by activityViewModels()
-    private lateinit var mStudentViewModel: ViewModel_studenci
+    private lateinit var mStudentViewModel: ViewModel_Main
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,7 +32,7 @@ class fragment_edytuj_ocene : Fragment() {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_edytuj_ocene, container, false)
 
-        mStudentViewModel = ViewModelProvider(this).get(ViewModel_studenci::class.java)
+        mStudentViewModel = ViewModelProvider(this).get(ViewModel_Main::class.java)
         view.edit_ocena_zmiana.setText(args.currentOcena.ocena)
         view.editText_OcenaKomentarz_zmiana.setText(args.currentOcena.komentarz)
         view.text_ImieNazwisko_zmienOcene.text = sharedViewModel.curStudent.value?.imie+" "+sharedViewModel.curStudent.value?.nazwisko

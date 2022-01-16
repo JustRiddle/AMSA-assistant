@@ -82,6 +82,9 @@
         <action
             android:id="@+id/action_fragment_grupa_details_to_fragment_enrolment"
             app:destination="@id/fragment_enrolment" />
+        <action
+            android:id="@+id/action_fragment_grupa_details_to_fragment_edytuj_spotkanie"
+            app:destination="@id/fragment_edytuj_spotkanie" />
     </fragment>
     <fragment
         android:id="@+id/fragment_dodaj_spotkanie"
@@ -93,6 +96,9 @@
             app:destination="@id/fragment_grupa_details"
             app:popUpTo="@id/fragment_grupa_details"
             app:popUpToInclusive="true" />
+        <argument
+            android:name="currentGroup"
+            app:argType="com.example.assistant.Model.Grupa" />
     </fragment>
     <fragment
         android:id="@+id/fragment_dodaj_ocene"
@@ -164,5 +170,19 @@
         <argument
             android:name="currentOcena"
             app:argType="com.example.assistant.Model.Ocena" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_edytuj_spotkanie"
+        android:name="com.example.assistant.fragment_edytuj_spotkanie"
+        android:label="fragment_edytuj_spotkanie"
+        tools:layout="@layout/fragment_edytuj_spotkanie" >
+        <action
+            android:id="@+id/action_fragment_edytuj_spotkanie_to_fragment_grupa_details"
+            app:destination="@id/fragment_grupa_details"
+            app:popUpTo="@id/fragment_grupa_details"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="currentSpotkanie"
+            app:argType="com.example.assistant.Model.Spotkanie" />
     </fragment>
 </navigation>

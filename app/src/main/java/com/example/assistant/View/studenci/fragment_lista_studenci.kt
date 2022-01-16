@@ -9,7 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.assistant.ViewModel.ViewModel_studenci
+import com.example.assistant.ViewModel.ViewModel_Main
 import kotlinx.android.synthetic.main.fragment_lista_studenci.view.*
 import kotlinx.coroutines.InternalCoroutinesApi
 
@@ -17,7 +17,7 @@ import kotlinx.coroutines.InternalCoroutinesApi
 @InternalCoroutinesApi
 class fragment_lista_studenci : Fragment() {
 
-    private lateinit var mStudentViewModel: ViewModel_studenci
+    private lateinit var mStudentViewModel: ViewModel_Main
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,7 +33,7 @@ class fragment_lista_studenci : Fragment() {
         recyclerStudenci.layoutManager = LinearLayoutManager(requireContext())
 
         // ViewModel
-        mStudentViewModel = ViewModelProvider(this).get(ViewModel_studenci::class.java)
+        mStudentViewModel = ViewModelProvider(this).get(ViewModel_Main::class.java)
         mStudentViewModel.getAllStudents.observe(viewLifecycleOwner, Observer {
             student -> adapter.setData(student)
         })

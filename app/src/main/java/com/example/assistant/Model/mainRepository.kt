@@ -1,6 +1,10 @@
 package com.example.assistant.Model
 
 import androidx.lifecycle.LiveData
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import androidx.room.Update
 
 class mainRepository(private  val mainDAO: mainDAO) {
     val getAllStudents: LiveData<List<Student>> = mainDAO.getAllStudents()
@@ -34,4 +38,15 @@ class mainRepository(private  val mainDAO: mainDAO) {
     suspend fun updateOcena(ocena: Ocena) {
         mainDAO.updateOcena(ocena)
     }
+
+
+    suspend fun addSpotkanie(spotkanie: Spotkanie){
+        mainDAO.addSpotkanie(spotkanie)
+    }
+
+    suspend fun updateSpotkanie(spotkanie: Spotkanie){
+        mainDAO.updateSpotkanie(spotkanie)
+    }
+
+
 }

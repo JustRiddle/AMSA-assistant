@@ -11,12 +11,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.assistant.Model.Ocena
-import com.example.assistant.Model.Student
-import com.example.assistant.ViewModel.ViewModel_studenci
+import com.example.assistant.ViewModel.ViewModel_Main
 import kotlinx.android.synthetic.main.fragment_dodaj_ocene.*
 import kotlinx.android.synthetic.main.fragment_dodaj_ocene.view.*
-import kotlinx.android.synthetic.main.fragment_dodaj_studenta.*
-import kotlinx.android.synthetic.main.fragment_dodaj_studenta.view.*
 import kotlinx.coroutines.InternalCoroutinesApi
 
 
@@ -24,7 +21,7 @@ import kotlinx.coroutines.InternalCoroutinesApi
 class fragment_dodaj_ocene : Fragment() {
 
     private val args by navArgs<fragment_dodaj_oceneArgs>()
-    private lateinit var mStudentViewModel: ViewModel_studenci
+    private lateinit var mStudentViewModel: ViewModel_Main
 
 
     override fun onCreateView(
@@ -33,7 +30,7 @@ class fragment_dodaj_ocene : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_dodaj_ocene, container, false)
-        mStudentViewModel = ViewModelProvider(this).get(ViewModel_studenci::class.java)
+        mStudentViewModel = ViewModelProvider(this).get(ViewModel_Main::class.java)
 
         view.btn_dodajOcene.setOnClickListener {
             insertDataToDatabase()

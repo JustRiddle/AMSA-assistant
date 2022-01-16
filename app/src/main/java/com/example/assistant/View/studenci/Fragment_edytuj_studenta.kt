@@ -12,7 +12,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.assistant.Model.Student
 import com.example.assistant.R
-import com.example.assistant.ViewModel.ViewModel_studenci
+import com.example.assistant.ViewModel.ViewModel_Main
 import kotlinx.android.synthetic.main.fragment_edytuj_studenta.*
 import kotlinx.android.synthetic.main.fragment_edytuj_studenta.view.*
 import kotlinx.coroutines.InternalCoroutinesApi
@@ -21,7 +21,7 @@ import kotlinx.coroutines.InternalCoroutinesApi
 class fragment_edytuj_studenta : Fragment() {
 
     private val args by navArgs<fragment_edytuj_studentaArgs>()
-    private lateinit var mStudentViewModel: ViewModel_studenci
+    private lateinit var mStudentViewModel: ViewModel_Main
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,7 +30,7 @@ class fragment_edytuj_studenta : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_edytuj_studenta, container, false)
 
-        mStudentViewModel = ViewModelProvider(this).get(ViewModel_studenci::class.java)
+        mStudentViewModel = ViewModelProvider(this).get(ViewModel_Main::class.java)
         view.edit_imie_zmiana.setText(args.currentStudent.imie)
         view.edit_nazwisko_zmiana.setText(args.currentStudent.nazwisko)
         view.edit_nr_albumu_zmiana.setText(args.currentStudent.nr_albumu)
