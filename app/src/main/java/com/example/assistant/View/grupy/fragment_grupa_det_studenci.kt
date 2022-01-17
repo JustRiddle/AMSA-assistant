@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.assistant.Model.Grupa
+import com.example.assistant.ViewModel.AdapterStudenciWGrupie
 import com.example.assistant.ViewModel.SharedViewModel
 import com.example.assistant.ViewModel.ViewModel_Main
 import kotlinx.android.synthetic.main.fragment_grupa_det_studenci.view.*

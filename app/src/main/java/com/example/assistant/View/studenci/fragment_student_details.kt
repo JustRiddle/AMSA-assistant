@@ -17,6 +17,7 @@ import com.example.assistant.Model.Grupa
 import com.example.assistant.Model.SpinerGroupCallback
 import com.example.assistant.ViewModel.AdapterSpinner
 import com.example.assistant.ViewModel.SharedViewModel
+import com.example.assistant.ViewModel.TabsAdapterStudentDet
 import com.example.assistant.ViewModel.ViewModel_Main
 import kotlinx.android.synthetic.main.fragment_student_details.*
 import kotlinx.android.synthetic.main.fragment_student_details.view.*
@@ -60,9 +61,6 @@ class fragment_student_details : Fragment(), SpinerGroupCallback {
         })
 
 
-        Log.d("MOJE", "TO MA BY PRZED VMem")
-
-
 
         view.student_details_imieNazwisko.text = args.currentStudent.imie+" "+args.currentStudent.nazwisko
         view.student_details_nrAlbumu.text = args.currentStudent.nr_albumu
@@ -73,19 +71,6 @@ class fragment_student_details : Fragment(), SpinerGroupCallback {
         }
 
         return view
-    }
-
-
-
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-//        viewPager_studentDet.adapter = TabsAdapterStudentDet(childFragmentManager)
-//        tabStudentDet.setupWithViewPager(viewPager_studentDet)
-
-
-
     }
 
     override fun onItemSelect(grupa: Grupa) {

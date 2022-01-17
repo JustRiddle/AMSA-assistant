@@ -1,4 +1,4 @@
-package com.example.assistant
+package com.example.assistant.View.grupy
 
 import android.os.Bundle
 import android.text.TextUtils
@@ -13,11 +13,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.assistant.ViewModel.AdapterNoweSpotkanie
 import com.example.assistant.Model.Grupa
 import com.example.assistant.Model.ObecnosciCallback
 import com.example.assistant.Model.Spotkanie
+import com.example.assistant.R
 import com.example.assistant.ViewModel.ViewModel_Main
-import kotlinx.android.synthetic.main.fragment_dodaj_spotkanie.view.*
 import kotlinx.android.synthetic.main.fragment_edytuj_spotkanie.*
 import kotlinx.android.synthetic.main.fragment_edytuj_spotkanie.view.*
 import kotlinx.coroutines.InternalCoroutinesApi

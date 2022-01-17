@@ -9,6 +9,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.assistant.ViewModel.SharedViewModel
+import com.example.assistant.ViewModel.TabsAdapterGrupaDet
 import kotlinx.android.synthetic.main.fragment_grupa_details.*
 import kotlinx.android.synthetic.main.fragment_grupa_details.view.*
 import kotlinx.coroutines.InternalCoroutinesApi

@@ -1,4 +1,4 @@
-package com.example.assistant
+package com.example.assistant.View.grupy
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,8 +10,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.assistant.ViewModel.AdapterEnrolment
 import com.example.assistant.Model.RecyclerStudentCallback
 import com.example.assistant.Model.Student
+import com.example.assistant.R
 import com.example.assistant.ViewModel.ViewModel_Main
 import kotlinx.android.synthetic.main.fragment_enrolment.view.*
 import kotlinx.coroutines.InternalCoroutinesApi

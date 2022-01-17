@@ -33,4 +33,10 @@ class MainActivity : AppCompatActivity(){
         setupActionBarWithNavController(findNavController(R.id.MainfragmentContainer))
 
     }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return super.onSupportNavigateUp()
+    }
+
 }

@@ -1,19 +1,15 @@
-package com.example.assistant
+package com.example.assistant.ViewModel
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import android.widget.ToggleButton
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.assistant.Model.ObecnosciCallback
-import com.example.assistant.Model.StudenciWGrupie
 import com.example.assistant.Model.Student
-import kotlinx.android.synthetic.main.recycler_item_studenci.view.*
+import com.example.assistant.R
 
 class AdapterNoweSpotkanie(private val listener: ObecnosciCallback):RecyclerView.Adapter<AdapterNoweSpotkanie.Holder>() {
     private var studenci = emptyList<Student>()

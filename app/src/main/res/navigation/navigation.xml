@@ -147,7 +147,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_enrolment"
-        android:name="com.example.assistant.fragment_enrolment"
+        android:name="com.example.assistant.View.grupy.fragment_enrolment"
         android:label="fragment_enrolment"
         tools:layout="@layout/fragment_enrolment" >
         <action
@@ -159,7 +159,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_edytuj_ocene"
-        android:name="com.example.assistant.fragment_edytuj_ocene"
+        android:name="com.example.assistant.View.studenci.fragment_edytuj_ocene"
         android:label="fragment_edytuj_ocene"
         tools:layout="@layout/fragment_edytuj_ocene" >
         <action
@@ -173,7 +173,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_edytuj_spotkanie"
-        android:name="com.example.assistant.fragment_edytuj_spotkanie"
+        android:name="com.example.assistant.View.grupy.fragment_edytuj_spotkanie"
         android:label="fragment_edytuj_spotkanie"
         tools:layout="@layout/fragment_edytuj_spotkanie" >
         <action

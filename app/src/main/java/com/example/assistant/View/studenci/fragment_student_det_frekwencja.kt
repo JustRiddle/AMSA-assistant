@@ -9,10 +9,9 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.example.assistant.ViewModel.AdapterSpotkania
 import com.example.assistant.ViewModel.SharedViewModel
 import com.example.assistant.ViewModel.ViewModel_Main
-import kotlinx.android.synthetic.main.fragment_grupa_det_spotkania.view.*
 import kotlinx.android.synthetic.main.fragment_student_det_frekwencja.view.*
 import kotlinx.coroutines.InternalCoroutinesApi
 

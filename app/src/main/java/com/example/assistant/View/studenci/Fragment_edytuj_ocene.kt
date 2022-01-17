@@ -1,4 +1,4 @@
-package com.example.assistant
+package com.example.assistant.View.studenci
 
 import android.os.Bundle
 import android.text.TextUtils
@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.assistant.Model.Ocena
+import com.example.assistant.R
 import com.example.assistant.ViewModel.SharedViewModel
 import com.example.assistant.ViewModel.ViewModel_Main
 import kotlinx.android.synthetic.main.fragment_edytuj_ocene.*

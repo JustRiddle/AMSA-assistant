@@ -1,14 +1,14 @@
-package com.example.assistant
+package com.example.assistant.ViewModel
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.assistant.Model.Grupa
-import com.example.assistant.Model.Student
+import com.example.assistant.R
+import com.example.assistant.fragment_tabsDirections
 import kotlinx.android.synthetic.main.recycler_item_grupy.view.*
 import kotlinx.android.synthetic.main.recycler_item_studenci.view.*
 

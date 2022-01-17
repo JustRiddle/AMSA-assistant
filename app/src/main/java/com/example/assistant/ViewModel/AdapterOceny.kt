@@ -1,4 +1,4 @@
-package com.example.assistant
+package com.example.assistant.ViewModel
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,8 +8,8 @@ import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.assistant.Model.Ocena
-import com.example.assistant.Model.Spotkanie
-import com.example.assistant.Model.Student
+import com.example.assistant.R
+import com.example.assistant.fragment_student_detailsDirections
 import kotlinx.android.synthetic.main.recycler_item_grupy.view.*
 import kotlinx.android.synthetic.main.recycler_item_ocena.view.*
 
@@ -49,7 +49,6 @@ class AdapterOceny():RecyclerView.Adapter<AdapterOceny.Holder>() {
     override fun getItemCount()=oceny.count()
 
     fun setData(oceny_zewn: List<Ocena>){
-        Log.d("MOJE", "AdapterOceny dostał: "+oceny_zewn.toString())
         this.oceny = oceny_zewn
         notifyDataSetChanged()
     }

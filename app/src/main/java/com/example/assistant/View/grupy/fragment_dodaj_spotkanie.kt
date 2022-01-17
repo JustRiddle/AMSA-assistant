@@ -13,6 +13,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.assistant.Model.*
+import com.example.assistant.ViewModel.AdapterNoweSpotkanie
 import com.example.assistant.ViewModel.ViewModel_Main
 import kotlinx.android.synthetic.main.fragment_dodaj_spotkanie.*
 import kotlinx.android.synthetic.main.fragment_dodaj_spotkanie.view.*

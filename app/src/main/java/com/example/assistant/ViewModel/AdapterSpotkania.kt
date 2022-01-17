@@ -1,4 +1,4 @@
-package com.example.assistant
+package com.example.assistant.ViewModel
 
 import android.graphics.Color
 import android.util.Log
@@ -9,8 +9,8 @@ import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.assistant.Model.Spotkanie
-import com.example.assistant.Model.Student
-import java.lang.Exception
+import com.example.assistant.R
+import com.example.assistant.fragment_grupa_detailsDirections
 
 class AdapterSpotkania():RecyclerView.Adapter<AdapterSpotkania.Holder>() {
     private var spotkania = emptyList<Spotkanie>()

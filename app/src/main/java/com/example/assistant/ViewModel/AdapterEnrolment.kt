@@ -1,34 +1,43 @@
-package com.example.assistant
+package com.example.assistant.ViewModel
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.assistant.Model.Student
-import kotlinx.android.synthetic.main.recycler_item_studenci.view.*
+import com.example.assistant.Model.*
+import com.example.assistant.R
+import kotlinx.android.synthetic.main.recycler_item_zapisy.view.*
+import kotlinx.coroutines.InternalCoroutinesApi
 
-class AdapterStudenci:RecyclerView.Adapter<AdapterStudenci.Holder>() {
+
+@InternalCoroutinesApi
+class AdapterEnrolment(private val listener: RecyclerStudentCallback): RecyclerView.Adapter<AdapterEnrolment.Holder>() {
+
 
     private var studenci = emptyList<Student>()
+    private var currentGroup = Grupa(0,"placeholder","","","")
+
+
     inner class Holder(itemView: View): RecyclerView.ViewHolder(itemView){
         val textViewImie: TextView
         val textViewNazwisko: TextView
         val textViewNrAlbumu: TextView
 
         init {
-            textViewImie = itemView.findViewById<TextView>(R.id.textView_Imie)
-            textViewNazwisko = itemView.findViewById<TextView>(R.id.textView_Nazwisko)
-            textViewNrAlbumu = itemView.findViewById<TextView>(R.id.textView_NrAlbumu)
+
+            textViewImie = itemView.findViewById<TextView>(R.id.textView_Imie_enr)
+            textViewNazwisko = itemView.findViewById<TextView>(R.id.textView_Nazwisko_enr)
+            textViewNrAlbumu = itemView.findViewById<TextView>(R.id.textView_NrAlbumu_enr)
 
         }
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
+
         val view = LayoutInflater.from(parent.context).inflate(
-            R.layout.recycler_item_studenci, parent,false) as View
+            R.layout.recycler_item_zapisy, parent,false) as View
 
         return Holder(view)
 
@@ -39,16 +48,17 @@ class AdapterStudenci:RecyclerView.Adapter<AdapterStudenci.Holder>() {
         holder.textViewImie.text=studenci[position].imie
         holder.textViewNrAlbumu.text=studenci[position].nr_albumu
 
-        holder.itemView.item_student.setOnClickListener {
-            val action = fragment_tabsDirections.actionFragmentTabsToFragmentStudentDetails(studenci[position])
-            holder.itemView.findNavController().navigate(action)
+        holder.itemView.item_enrolment.btn_enrol.setOnClickListener {
+            listener.onItemClick(studenci[position])
         }
+
     }
 
     override fun getItemCount()=studenci.count()
 
-    fun setData(studenci_zewn: List<Student>){
+    fun setData(studenci_zewn: List<Student>, grupa: Grupa){
         this.studenci = studenci_zewn
+        this.currentGroup = grupa
         notifyDataSetChanged()
     }
 

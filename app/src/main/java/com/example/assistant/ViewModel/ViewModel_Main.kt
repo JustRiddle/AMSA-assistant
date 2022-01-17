@@ -90,9 +90,7 @@ class ViewModel_Main(application: Application): AndroidViewModel(application) {
     }
 
     fun getOceny(grupa: Grupa, student: Student):LiveData<List<Ocena>>{
-        Log.d("PRZYCHODZACE","CO DO "+grupa.toString()+" KURWY")
         val ocenki:LiveData<List<Ocena>> = mainDAO.getOceny(student.studentId, grupa.grupaId)
-        Log.d("Z VMa", ocenki.value.toString() )
         return ocenki
     }
 
