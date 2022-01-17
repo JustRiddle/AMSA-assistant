@@ -41,6 +41,13 @@ class fragment_edytuj_studenta : Fragment() {
                 view.findNavController().navigate(action)
             }
         }
+
+        view.btn_delete_student.setOnClickListener {
+            mStudentViewModel.deleteStudent(args.currentStudent)
+            Toast.makeText(requireContext(), "Student usunięty!", Toast.LENGTH_SHORT).show()
+            val action = fragment_edytuj_studentaDirections.actionFragmentEdytujStudentaToFragmentTabs()
+            view.findNavController().navigate(action)
+        }
         return view
     }
 

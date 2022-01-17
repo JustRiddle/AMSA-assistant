@@ -130,6 +130,11 @@
         <argument
             android:name="currentStudent"
             app:argType="com.example.assistant.Model.Student" />
+        <action
+            android:id="@+id/action_fragment_edytuj_studenta_to_fragment_tabs"
+            app:destination="@id/fragment_tabs"
+            app:popUpTo="@id/fragment_tabs"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/fragment_edytuj_grupe"
@@ -144,6 +149,11 @@
         <argument
             android:name="currentGroup"
             app:argType="com.example.assistant.Model.Grupa" />
+        <action
+            android:id="@+id/action_fragment_edytuj_grupe_to_fragment_tabs"
+            app:destination="@id/fragment_tabs"
+            app:popUpTo="@id/fragment_tabs"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/fragment_enrolment"

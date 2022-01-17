@@ -45,6 +45,14 @@ class fragment_edytuj_grupe : Fragment() {
             }
         }
 
+        view.btn_delete_group.setOnClickListener {
+
+            mViewModel.deleteGrupa(args.currentGroup)
+            Toast.makeText(requireContext(), "Grupa usunięta!", Toast.LENGTH_SHORT).show()
+            val action = fragment_edytuj_grupeDirections.actionFragmentEdytujGrupeToFragmentTabs()
+            view.findNavController().navigate(action)
+        }
+
 
         return view
     }

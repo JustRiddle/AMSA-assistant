@@ -19,6 +19,10 @@ class mainRepository(private  val mainDAO: mainDAO) {
         mainDAO.updateStudent(student)
     }
 
+    suspend fun deleteStudent(student: Student){
+        mainDAO.deleteStudent(student)
+    }
+
     suspend fun addGroup(grupa: Grupa){
         mainDAO.addGrupa(grupa)
     }
@@ -26,10 +30,24 @@ class mainRepository(private  val mainDAO: mainDAO) {
     suspend fun updateGroup(grupa: Grupa){
         mainDAO.updateGrupa(grupa)
     }
+
+    suspend fun deleteGroup(grupa: Grupa){
+        mainDAO.deleteGrupa(grupa)
+    }
+
     fun addEnrolment(grupa: Grupa, student: Student){
         mainDAO.addEnrolment(GrupaStudentCross(grupa.grupaId,student.studentId))
     }
 
+    suspend fun deleteEnrolmentByGroup(groupID: Int)
+    {
+        mainDAO.deleteEnrolmentByGroup(groupID)
+    }
+
+    suspend fun deleteEnrolmentByStudent(studentID: Int)
+    {
+        mainDAO.deleteEnrolmentByStudent(studentID)
+    }
 
     suspend fun addOcena(ocena: Ocena){
         mainDAO.addOcena(ocena)
@@ -39,6 +57,9 @@ class mainRepository(private  val mainDAO: mainDAO) {
         mainDAO.updateOcena(ocena)
     }
 
+    suspend fun deleteOcena(ocena: Ocena) {
+        mainDAO.deleteOcena(ocena)
+    }
 
     suspend fun addSpotkanie(spotkanie: Spotkanie){
         mainDAO.addSpotkanie(spotkanie)
@@ -46,6 +67,9 @@ class mainRepository(private  val mainDAO: mainDAO) {
 
     suspend fun updateSpotkanie(spotkanie: Spotkanie){
         mainDAO.updateSpotkanie(spotkanie)
+    }
+    suspend fun deleteSpotkanie(spotkanie: Spotkanie){
+        mainDAO.deleteSpotkanie(spotkanie)
     }
 
 

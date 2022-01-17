@@ -44,6 +44,14 @@ class fragment_edytuj_ocene : Fragment() {
             updateItem()
         }
 
+        view.btn_delete_ocena.setOnClickListener {
+
+            mStudentViewModel.deleteOcena(args.currentOcena)
+            Toast.makeText(requireContext(), "Ocena usunięta!", Toast.LENGTH_SHORT).show()
+            val action = fragment_edytuj_oceneDirections.actionFragmentEdytujOceneToFragmentStudentDetails(sharedViewModel.curStudent.value!!) //(studenci[position])
+            this.findNavController().navigate(action)
+        }
+
         return view
     }
 

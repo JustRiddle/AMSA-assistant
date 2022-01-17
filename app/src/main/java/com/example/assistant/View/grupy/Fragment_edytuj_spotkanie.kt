@@ -63,6 +63,14 @@ class fragment_edytuj_spotkanie : Fragment(), ObecnosciCallback {
             insertDataToDatabase()
         }
 
+        view.btn_delete_spotkanie.setOnClickListener {
+            mViewModel.deleteSpotkanie(args.currentSpotkanie)
+            Toast.makeText(requireContext(), "Spotkanie Usunięte" +
+                    "!", Toast.LENGTH_SHORT).show()
+            val action = fragment_edytuj_spotkanieDirections.actionFragmentEdytujSpotkanieToFragmentGrupaDetails(currentGroup)
+            view?.findNavController()?.navigate(action)
+        }
+
         return view
     }
 

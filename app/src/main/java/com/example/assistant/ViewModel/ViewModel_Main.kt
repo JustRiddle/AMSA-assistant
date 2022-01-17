@@ -38,6 +38,13 @@ class ViewModel_Main(application: Application): AndroidViewModel(application) {
         }
     }
 
+    fun deleteStudent(student: Student){
+        viewModelScope.launch(Dispatchers.IO){
+            repository.deleteStudent(student)
+            repository.deleteEnrolmentByStudent(student.studentId)
+        }
+    }
+
     fun addGroup(grupa: Grupa){
         viewModelScope.launch(Dispatchers.IO) {
             repository.addGroup(grupa)
@@ -47,6 +54,13 @@ class ViewModel_Main(application: Application): AndroidViewModel(application) {
     fun updateGrupa(grupa: Grupa){
         viewModelScope.launch(Dispatchers.IO){
             repository.updateGroup(grupa)
+        }
+    }
+
+    fun deleteGrupa(grupa: Grupa){
+        viewModelScope.launch(Dispatchers.IO){
+            repository.deleteGroup(grupa)
+            repository.deleteEnrolmentByGroup(grupa.grupaId)
         }
     }
 
@@ -82,7 +96,11 @@ class ViewModel_Main(application: Application): AndroidViewModel(application) {
         }
     }
 
-
+    fun deleteOcena(ocena: Ocena){
+        viewModelScope.launch(Dispatchers.IO){
+            repository.deleteOcena(ocena)
+        }
+    }
 
     fun getStudenciWGrupie(grupa: Grupa):LiveData<List<StudenciWGrupie>>{
         val StudenciWGrupie:LiveData<List<StudenciWGrupie>> = mainDAO.getStudenciWGrupie(grupa.grupaId)
@@ -103,6 +121,11 @@ class ViewModel_Main(application: Application): AndroidViewModel(application) {
     fun updateSpotkanie(spotkanie: Spotkanie){
         viewModelScope.launch(Dispatchers.IO){
             repository.updateSpotkanie(spotkanie)
+        }
+    }
+    fun deleteSpotkanie(spotkanie: Spotkanie){
+        viewModelScope.launch(Dispatchers.IO){
+            repository.deleteSpotkanie(spotkanie)
         }
     }
 
